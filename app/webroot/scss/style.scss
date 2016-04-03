@@ -1,0 +1,30 @@
+* {
+	margin: 0;
+}
+html, body {
+	height: 100%;
+}
+#main {
+  padding-top: 55px;
+}
+#inner-outer {
+  min-height: 100%;
+	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+	height: 100%;
+	margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+
+  .logo-loader {
+  	height: 70px;
+  	animation: beat 1s infinite alternate;
+  	transform-origin: center;
+  }
+
+  /* Heart beat animation */
+  @keyframes beat{
+  	to { transform: scale(1.4); }
+  }
+}
+
+#globalFooter, .push {
+	height: 155px; /* .push must be the same height as .footer */
+}

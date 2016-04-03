@@ -24,7 +24,7 @@
  *
  */
 	App::import('Lib', 'Alloy');
-	
+
 
 	// Load generated assets for processing
 	$jsAppAssets = json_decode(file_get_contents(WWW_ROOT.'assets/jsapp_assets_map.json') , true);
@@ -76,7 +76,6 @@
 </head>
 
 <body id="sub-page">
-
 	<div id="inner-outer">
 		<div id="headerTop"></div>
 
@@ -90,13 +89,16 @@
 
 		<div id='main'></div>
 
-		<div id="globalFooter"></div>
+		<div class="push"></div>
 	</div>
+	<div id="globalFooter"></div>
 	<script>
 		(function() {
 			App.environment = '<?php echo Configure::read('environment');?>';
 
 			$(document).ready(function() {
+				var header = new App.views.ControlHeader();
+				header.inject($("#headerTop"), {method: "replaceWith"});
 
 				var router = App.Router.getInstance();
 

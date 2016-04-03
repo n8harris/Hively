@@ -1,0 +1,56 @@
+@import "variables.scss";
+
+#navigation {
+  width: 100%;
+  background: $nav-bg;
+  border-bottom: 5px solid $nav-dark-yellow;
+  position: fixed;
+  height: 35px;
+  margin-top: 0;
+  z-index: 1;
+
+  .hamburger {
+    color: $white-color;
+    margin-top: 7px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .dropdown-menu-h {
+    background: $nav-dropdown-bg;
+    color: $white-color;
+    width: 100%;
+    position: absolute;
+    display: none;
+    top: 35px;
+
+    ul.dropdown-items {
+      padding-left: 0;
+      margin-bottom: 0;
+      & > li {
+        list-style-type: none;
+        padding: 10px;
+        padding-left: 20px;
+        &:hover {
+          background: $nav-dropdown-bg-hover;
+          cursor: pointer;
+        }
+        .profile-img {
+          height: 25px;
+          -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+          clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .profile-text {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  .nav-logo {
+
+    height: 25px;
+    margin-top: 3px;
+  }
+
+}
