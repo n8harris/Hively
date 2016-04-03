@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="AccountTest" file="/home/vagrant/Code/odyssey-adventure-club/app/Test/Case/Model/AccountTest.php" tests="1" assertions="1" failures="0" errors="0" time="0.402724">
+    <testcase name="testGetAccount" class="AccountTest" file="/home/vagrant/Code/odyssey-adventure-club/app/Test/Case/Model/AccountTest.php" line="13" assertions="1" time="0.402724"/>
+  </testsuite>
+</testsuites>

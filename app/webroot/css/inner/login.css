@@ -1,0 +1,165 @@
+/* Login Style */
+
+/* Login Logo Style */
+.login-logo {
+	margin:0 auto ;
+	right:0;
+}
+
+#login-wrapper {
+	width:782px;
+	margin:54px auto 0;
+	border:1px solid #e0e0e0;
+	border-bottom:3px solid #e3e3e3;
+	background:#fff;
+	-moz-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+.btn-cancel {
+	background:#1f1f26;
+	color:#8c8cb2;
+	border:2px solid #404050;
+	text-shadow:none;
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	font-family: 'Dosis', sans-serif;
+	font-size:22px;
+	font-weight:normal;
+	margin-right:79px;
+}
+	.btn-cancel:hover {
+		background:#404050;
+		color:#8c8cb2;
+		border-color:#404050;
+	}
+	p.cancel-top {
+		margin:0 !important;
+		padding-top:36px;
+	}
+
+.login-form {
+	padding:36px 50px;
+}
+	.btn-form {
+		line-height:26px;
+		padding-left:40px;
+		padding-right:40px;
+		margin-bottom:25px;
+		vertical-align:top;
+	}
+	.login-character {
+		padding:14px;
+		position:relative;
+	}
+
+	.btn-icon {
+		background-image:url(/img/club/bttnIcon.gif);
+		background-position:80% 14px;
+		background-repeat:no-repeat;
+		padding-left:20px;
+		padding-right:54px;
+	}
+	.btn-icon:hover {
+		background-image:url(/img/club/bttnIcon.gif);
+		background-position:80% 14px;
+		background-repeat:no-repeat;
+	}
+
+/* Form Style */
+#login-wrapper .form {
+	margin:0;
+}
+#login-wrapper .form h1 {
+	margin:0;
+	padding:0;
+	margin-bottom:15px !important;
+}
+#login-wrapper .form input {
+		font-family: "OpenSans", "Century Gothic", Helvetica, arial, serif;
+		width:91%;
+		height:50px;
+		padding:5px 20px;
+		margin:0 0 18px;
+		font-size:18px;
+		color:#878787;
+		border:none;
+		background:#e3e3e3;
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+		box-shadow:none;
+	}
+		.form input:focus {
+			background:#fff;
+		}
+#login-wrapper .speak {
+		background:#ffef8e;
+		border:1px solid #e1e1e1;
+		border-top:none;
+		border-bottom-width:2px;
+		position:relative;
+		width:166px;
+		min-height:70px;
+		position:absolute;
+		left:-150px;
+		border-bottom-color:#a5a5a5;
+		-moz-border-radius:5px;
+		-moz-border-radius:5px;
+		border-radius:5px;
+	}
+#login-wrapper 	.speak span.arw {
+			display:block;
+			width:17px;
+			height:23px;
+			position:absolute;
+			right:-17px;
+			top:23px;
+			background:url(/img/club/speak-arrow.png) 0 0 no-repeat;
+		}
+#login-wrapper 	.speak span.arw2 {
+			display:block;
+			width:25px;
+			height:13px;
+			background:url(/img/club/speak-arrow.png) 0 -23px no-repeat;
+			position:absolute;
+			right:25px;
+			bottom:-13px;
+		}
+		body#sub-page #login-wrapper  .speak p {
+			margin:0!important;
+			font-family: 'Dosis', sans-serif;
+		}
+		body#sub-page #login-wrapper .speak p.welcome {
+			font-size:22px;
+			line-height:70px;
+			color:#444;
+			text-align:center;
+		}
+#login-wrapper .speak.logout {
+			left:-110px;
+			top:-10px;
+			width:180px;
+		}
+		body#sub-page #login-wrapper .speak.logout p.welcome {
+			line-height:normal;
+			line-height:26px;
+			padding:12px 0;
+		}
+#login-wrapper .charGap {
+			margin-top:25px;
+		}
+#login-wrapper .btn-form.span12 {
+			width:100%;
+			padding-left:0;
+			padding-right:0;
+		}
+	body#sub-page #login-wrapper .login-form p.general-text,
+	.login-form li{
+		font-family: "OpenSans", "Century Gothic", Helvetica, arial, serif;
+		font-size:18px;
+		line-height:32px;
+	}
+#login-wrapper .login-form  ul {
+		margin-bottom:25px;
+	}

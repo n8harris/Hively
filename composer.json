@@ -1,0 +1,14 @@
+{
+    "name": "fotf/oaclub",
+    "license": "Private",
+    "authors": [
+        {
+            "name": "FOTF Web Dev",
+            "email": "fotf-webdev@oaclub.org"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^2.0",
+        "phpunit/phpunit": "3.7.38"
+    }
+}

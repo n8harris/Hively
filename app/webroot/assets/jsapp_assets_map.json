@@ -1,0 +1,6 @@
+{
+"js": [
+  "assets/js/jsapp/jsapp-vendor.min.js",
+  "assets/js/jsapp/jsapp.min.js"
+] 
+}

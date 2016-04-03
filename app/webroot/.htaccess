@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Custom redirects
+    Redirect /app https://itunes.apple.com/us/app/odyssey-adventure-club/id776170924?mt=8
+    RewriteCond %{REQUEST_URI} ^/compassion/*$ [NC]
+    RewriteRule ^(.*)$ https://focusonthefamily.webconnex.com/co-oaccompassion [R=301,L]
+    
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

@@ -1,0 +1,6 @@
+{
+"js": [
+  "assets/js/publicapp/publicapp-vendor.min.js",
+  "assets/js/publicapp/publicapp.min.js"
+] 
+}
