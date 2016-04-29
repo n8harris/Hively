@@ -7,8 +7,14 @@
             "email": "fotf-webdev@oaclub.org"
         }
     ],
+    "extra": {
+        "installer-paths": {
+          "app/Plugin/Mongodb": ["ichikaway/cakephp-mongodb"]
+        }
+    },
     "require": {
         "vlucas/phpdotenv": "^2.0",
-        "phpunit/phpunit": "3.7.38"
+        "phpunit/phpunit": "3.7.38",
+        "ichikaway/cakephp-mongodb": "*@dev"
     }
 }

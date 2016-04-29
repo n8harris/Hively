@@ -52,6 +52,7 @@ App.RouterBase = Backbone.Router.extend({
 		}
 		this.currentView = view;
 
+		$("#main").html($(App.tmpl.tmpl_partial_loader).render());
 		view.inject($("#main"));
 	},
 	_extractParameters: function(route, fragment) {

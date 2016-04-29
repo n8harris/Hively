@@ -62,27 +62,16 @@
  * flags =>
  * A key/value array of driver specific connection options.
  */
+
 class DATABASE_CONFIG {
 
-	public $default;
-	public $test;
+	public $mongo = array(
+				'datasource' => 'Mongodb.MongodbSource',
+        'host' => '127.0.0.1',
+        'database' => 'scotchbox',
+        'port' => 27017,
+        'prefix' => '',
+        'persistent' => 'true'
+	);
 
-	public function __construct(){
-		$this->default = $this->defaultConfig();
-		$this->test = $this->testConfig();
-	}
-
-	private function defaultConfig(){
-		$config = array(
-			'datasource' => '',
-		);
-		return $config;
-	}
-
-	private function testConfig(){
-		$config = array(
-			'datasource' => '',
-		);
-		return $config;
-	}
 }
