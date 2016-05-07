@@ -56,13 +56,15 @@ class Credential extends AppModel {
 		return false;
 	}
 
-	public function beforeValidate($options = array()) {
+	public function encryptPassword($password, $data) {
 
 		// Create a salt and hash the password, which is what is actually stored in db
-		if(isset($this->data['Credential']['password'])) {
-			$this->data['Credential']['salt'] = SecureCrypt::makeSalt();
-			$this->data['Credential']['hash'] = SecureCrypt::hash($this->data['Credential']['password'], $this->data['Credential']['salt'] . Configure::read('Security.salt'));
+		if(isset($password)) {
+			$data['Credential']['salt'] = SecureCrypt::makeSalt();
+			$data['Credential']['hash'] = SecureCrypt::hash($password, $data['Credential']['salt'] . Configure::read('Security.salt'));
 		}
+
+		return $data;
 	}
 
 	public function comparePasswords($field = null) {

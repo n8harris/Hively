@@ -72,11 +72,14 @@ class CreateUser extends ApiCall {
       $credentialData = array(
   			'Credential' => array(
   				'username' => $username,
-          'user_id' => $user['User']['id']
+          'user_id' => $user['User']['id'],
+					'failed_login_count' => 0,
+					'locked' => 0
   			)
   		);
 
       $Credential->create();
+      $credentialData = $Credential->encryptPassword($password, $credentialData);
       $credential = $Credential->save($credentialData);
 
 		}

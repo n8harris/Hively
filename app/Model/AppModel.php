@@ -22,6 +22,9 @@
 App::uses('Model', 'Model');
 
 class AppModel extends Model {
-	
+
+	const ROLE_ANON			= 'anon';
+	const ROLE_USER 		= 'user';
+
 
 }

@@ -34,7 +34,7 @@ class UserSession extends AppModel {
 	public $name = 'UserSession';
   var $useDbConfig = 'mongo';
   public $mongoSchema = array(
-      'user_id' => array('type' => 'objectId')
+      'user_id' => array('type' => 'objectId'),
       'username' => array('type' => 'string'),
       'key' => array('type' => 'string'),
       'email' => array('type' => 'string'),

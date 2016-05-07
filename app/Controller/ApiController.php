@@ -24,6 +24,7 @@
  */
 
 App::uses('Alloy', 'Lib/Alloy');
+App::uses('UserSession', 'Model');
 
 class ApiController extends AppController {
 
@@ -48,10 +49,15 @@ class ApiController extends AppController {
 		// Check for authorization header
 		$authHeader = apache_request_headers();
 
-		$sessionId = null;
+		if(isset($authHeader['Authorization'])){
+			$sessionId = $authHeader['Authorization'];
+		} else {
+			$sessionId	= isset($data['session_id']) 	? $data['session_id'] : null;
+		}
 
 		unset($data['api']);
 		unset($data['call']);
+		unset($data['session_id']);
 
 		$response = Alloy::instance()->dispatch($api, $call, $sessionId, $data);
 

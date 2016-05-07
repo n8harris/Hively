@@ -17,13 +17,12 @@ App.RouterBase = Backbone.Router.extend({
 	before: function(route, name, args) {
 
 		// verify user can load the view
-		/*if(!App.Data.getInstance().isLoggedIn() && !this.isPublic(name)) {
+		if(!App.Data.getInstance().isLoggedIn() && !this.isPublic(name)) {
+			App.onLogin = window.location.hash;
 
+			this.navigate("#login", {trigger: true});
+			return false;
 		}
-
-		if(!this.isPublic() && this.requiresActiveAccount(name) && !App.Data.getInstance().account.get('can_access')) {
-
-		}*/
 
 		$('html, body').animate({
 			scrollTop: 0
@@ -42,6 +41,8 @@ App.RouterBase = Backbone.Router.extend({
 	onSessionTimeout: function(event) {
 
 		event.stopPropagation();
+
+		this.navigate("login?timeout=1", {trigger: false});
 
 		window.location.reload();
 	},
