@@ -8,7 +8,25 @@ App::uses('Credential', 	'Model');
 class CreateUser extends ApiCall {
 
 	protected $_permissions = '*';
-	protected $_validation = array();
+	protected $_validation = array(
+
+		'first_name' 			=> array('required' => true),
+		'last_name' 			=> array('required' => true),
+
+		'gender' 				=> array('required' => true),
+
+		'email' 				=> array('required' => false),
+
+		'username' 				=> array('required' => true),
+
+		'password' 				=> array('required' => false), // only required on create
+
+		'birthday_month'		=> array('required' => true),
+		'birthday_day'			=> array('required' => true),
+		'birthday_year'			=> array('required' => true),
+
+		'role'					=> array('required' => true)
+	);
 
 	protected function _execute(array $data = array()) {
 
@@ -33,6 +51,7 @@ class CreateUser extends ApiCall {
 		$birthdayMonth 	= $data['birthday_month'];
 		$birthdayDay 	= $data['birthday_day'];
 		$birthdayYear 	= $data['birthday_year'];
+		$role 	= $data['role'];
 
     $accountData = array(
       'Account' => array(
@@ -54,10 +73,11 @@ class CreateUser extends ApiCall {
 				'profile_pic_url' => $avatarId,
 				'gender' => $gender,
 				'username' => $username,
-				'role' => 'user',
+				'role' => $role,
 				'birthday' => sprintf("%s-%s-%s", $birthdayYear, $birthdayMonth, $birthdayDay),
         'status' => 'new',
         'account_id' => $account['Account']['id']
+				'last_login_date' => null
 			)
 		);
 		if($email) {

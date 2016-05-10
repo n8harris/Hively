@@ -54,7 +54,7 @@ if (!defined('APP_DIR')) {
 }
 
 /* Includes for phpdotenv */
-require ROOT.'/vendor/autoload.php';
+require ROOT.'/app/Vendor/autoload.php';
 $dotenv = new Dotenv\Dotenv(ROOT);
 $dotenv->load();
 

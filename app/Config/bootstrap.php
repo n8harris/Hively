@@ -22,6 +22,8 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+App::import('Vendor', array('file' => 'autoload'));
+
 // Setup a 'default' cache configuration for use in the application.
 Cache::config('default', array('engine' => 'File'));
 

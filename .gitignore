@@ -17,14 +17,13 @@ app/tmp/logs/*
 app/webroot/js/build/*
 app/webroot/css/build/*
 webroot/
-!app/webroot
+app/webroot/assets/*
+app/Vendor/*
 
 .capistrano/
 node_modules/
 bower_components/
-config/environments/
 
-/vendor/*
-!/vendor/vulcas
+vendor/*
 
 .tags*

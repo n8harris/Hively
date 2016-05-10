@@ -25,6 +25,7 @@ class AppModel extends Model {
 
 	const ROLE_ANON			= 'anon';
 	const ROLE_USER 		= 'user';
+	const ROLE_BUSINESS	= 'business';
 
 
 }

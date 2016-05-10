@@ -43,6 +43,8 @@
 	Configure::write('environment', 	$_ENV['APP_ENVIRONMENT'] );
 	Configure::write('colorado.api', $_ENV['COLORADO_API_URL']);
 	Configure::write('colorado.key', $_ENV['COLORADO_MARKETPLACE_KEY']);
+	Configure::write('contentful.key', $_ENV['CONTENTFUL_API_KEY']);
+	Configure::write('contentful.space', $_ENV['CONTENTFUL_SPACE_ID']);
 
 
 	// TEST

@@ -12,9 +12,13 @@
           "app/Plugin/Mongodb": ["ichikaway/cakephp-mongodb"]
         }
     },
+		"config": {
+        "vendor-dir": "app/Vendor"
+    },
     "require": {
         "vlucas/phpdotenv": "^2.0",
         "phpunit/phpunit": "3.7.38",
-        "ichikaway/cakephp-mongodb": "*@dev"
+        "ichikaway/cakephp-mongodb": "*@dev",
+				"contentful/contentful": "*@beta"
     }
 }
