@@ -8,6 +8,8 @@ App = {
 		USER_DELETED: 'user_deleted',
 		CONTENT_PROGRESS: 'content_progress'
 	},
+	loader: '.logo-loader',
+	main_container: '#main',
 	views: {},
 	controls: {},
 	overlays: {},

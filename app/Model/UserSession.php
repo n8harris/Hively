@@ -76,8 +76,7 @@ class UserSession extends AppModel {
 
 		$conditions = array(
 			'UserSession.id'	=> $id,
-			'UserSession.key'	=> $key,
-			"UserSession.created >=" => date("Y-m-d H:i:s", time() - $this->sessionLength)
+			'UserSession.key'	=> $key
 		);
 		return $this->find('first', array('conditions' => $conditions));
 	}
@@ -99,7 +98,7 @@ class UserSession extends AppModel {
 	public function login($id, $user) {
 
 		$data = array(
-			'id' 		=> $id,
+			'id' => $id,
 			'user_id' 	=> $user['User']['id'],
 			'role'		=> $user['User']['role'],
 			'username' 	=> $user['User']['username'],

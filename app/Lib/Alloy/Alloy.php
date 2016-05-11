@@ -26,6 +26,7 @@
 App::uses('ApiCall', 		'Lib/Alloy');
 App::uses('ApiResponse', 	'Lib/Alloy');
 App::uses('ApiException', 	'Lib/Alloy');
+App::uses('UserSession', 	'Model');
 App::uses('Inflector', 		'Utility');
 
 class Alloy {
@@ -68,6 +69,28 @@ class Alloy {
 			}
 			if(!isset($this->_apiCache[$apiLibrary])) {
 				$this->_apiCache[$apiLibrary] = new $apiLibrary();
+			}
+
+			$UserSession = new UserSession();
+			if(!$this->_session) {
+				if($sessionId) {
+					$this->_session = $UserSession->loadIfValidFromUnified($sessionId);
+					if($this->_session) {
+						$parts = explode("-", $sessionId);
+						$sessionId = $parts[0];
+						if(strtotime($this->_session['UserSession']['created']) < time() - 1800) {
+							// every 5 minutes, update the session created date to insure that active users don't time out
+							$UserSession->id = $sessionId;
+							$UserSession->saveField('created', date("Y-m-d H:i:s", time()));
+						}
+					} else {
+						// timed out
+						$this->_session = $UserSession->start();
+						$this->_session['UserSession']['timed_out'] = true;
+					}
+				} else {
+					$this->_session = $UserSession->start();
+				}
 			}
 
 			$response = $this->_apiCache[$apiLibrary]->execute($data);

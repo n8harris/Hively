@@ -11,7 +11,7 @@ App::uses('ApiCall', 		'Lib/Alloy');
  */
 class GetQuestion extends ApiCall {
 
-	protected $_permissions = '*';
+	protected $_permissions = array('user');
 	protected $_validation = array();
 
 	protected function _execute(array $data = array()) {
@@ -21,7 +21,8 @@ class GetQuestion extends ApiCall {
 		$questions = $client->getEntries($query);
 
 		return new ApiResponse(array(
-			'questions' => $questions
+			'questions' => $questions,
+			'session' => Alloy::instance()->getSession()
 		));
 	}
 }

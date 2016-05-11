@@ -23,6 +23,7 @@
  *  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+App::uses('UserSession', 'Model');
 App::uses('Alloy', 'Lib/Alloy');
 App::uses('ApiException', 'Lib/Alloy');
 
@@ -55,7 +56,7 @@ class ApiCall {
 			$data = json_decode($data, true);
 		}
 
-		/*if($this->_permissions === null || $this->_validation === null) {
+		if($this->_permissions === null || $this->_validation === null) {
 			throw new ApiException("You must define permissions and validation rules.");
 		}
 
@@ -64,7 +65,7 @@ class ApiCall {
 		}
 		if(!$this->_checkValidation($data)) {
 			return new ApiResponse(null, ApiCall::INVALID_REQUEST, "Request parameters were invalid.", $this->_validationErrors);
-		}*/
+		}
 
 		return $this->_execute($data);
 	}

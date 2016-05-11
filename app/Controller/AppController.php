@@ -20,6 +20,8 @@
  */
 
 App::uses('Controller', 'Controller');
+App::uses('UserSession', 'Model');
+App::uses('User', 'Model');
 App::uses('Alloy', 'Lib/Alloy');
 
 /**
@@ -34,7 +36,7 @@ App::uses('Alloy', 'Lib/Alloy');
 class AppController extends Controller {
 
 	public $components = array('Cookie');
-	//public $uses = array('UserSession', 'User');
+	public $uses = array('UserSession', 'User');
 
 //	function beforeFilter() {
 //

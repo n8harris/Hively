@@ -55,7 +55,8 @@ class LoginUser extends ApiCall {
 
 			$response = array(
 				'user' => $user['User'],
-				'account' => $account['Account']
+				'account' => $account['Account'],
+				'session' => Alloy::instance()->getSession()
 			);
 
 			return new ApiResponse($response);

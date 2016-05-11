@@ -23,6 +23,7 @@
  *  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+App::uses('UserSession', 	'Model');
 App::uses('Alloy', 			'Lib/Alloy');
 
 class ApiResponse {
@@ -47,7 +48,12 @@ class ApiResponse {
 
 	public function toArray() {
 
+		$session = Alloy::instance()->getSession();
+
 		$array = array(
+			'session_id'	=> UserSession::makeUnifiedId($session),
+			'email'         => isset($session['UserSession']['email']) ? $session['UserSession']['email'] : null,
+			'role'			=> isset($session['UserSession']['role']) ? $session['UserSession']['role'] : 'anon',
 			'status'		=> $this->_status,
 			'message'		=> $this->_message,
 			'errors'		=> $this->_errors,

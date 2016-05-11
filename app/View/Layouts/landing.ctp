@@ -78,6 +78,7 @@
 <body id="sub-page">
 	<div id="inner-outer">
 		<div id="headerTop"></div>
+		<img class="logo-loader" src="/img/hively-blue-icon-logo.png" style="display:block" />
 
 		<!--[if lt IE 10]>
 			<div class="row">
@@ -89,7 +90,6 @@
 
 		<div id='main'></div>
 
-		<div class="push"></div>
 	</div>
 	<div id="globalFooter"></div>
 	<script>

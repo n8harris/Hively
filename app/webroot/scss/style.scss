@@ -1,8 +1,12 @@
 * {
 	margin: 0;
 }
-html, body {
-	height: 100%;
+html {
+	position: relative;
+  min-height: 100%;
+}
+body {
+    margin: 0 0 100px;
 }
 #main {
   padding-top: 55px;
@@ -11,12 +15,14 @@ html, body {
   min-height: 100%;
 	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
 	height: 100%;
-	margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
 
   .logo-loader {
-  	height: 70px;
-  	animation: beat 1s infinite alternate;
-  	transform-origin: center;
+		position: absolute;
+    height: 70px;
+    animation: beat 1s infinite alternate;
+    transform-origin: center;
+    top: 50vh;
+    left: 46vw;
   }
 
   /* Heart beat animation */
@@ -25,6 +31,10 @@ html, body {
   }
 }
 
-#globalFooter, .push {
-	height: 155px; /* .push must be the same height as .footer */
+#globalFooter {
+	position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
 }
