@@ -47,14 +47,18 @@ App.RouterBase = Backbone.Router.extend({
 		window.location.reload();
 	},
 	showView: function(view) {
-
+		this.listenTo(App.vent, 'rendered', function(){
+			$(App.loader).fadeOut(300, function(){
+				$(App.main_container).fadeIn(500);
+			});
+		});
 		if(this.currentView) {
 			this.currentView.unbind();
 		}
 		this.currentView = view;
-
-		$('.logo-loader').show();
-		view.inject($("#main"));
+		$(App.main_container).hide();
+		$(App.loader).show();
+		view.inject($(App.main_container));
 	},
 	_extractParameters: function(route, fragment) {
 		var result = route.exec(fragment).slice(1);

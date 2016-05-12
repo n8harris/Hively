@@ -24,9 +24,7 @@ App.views.PageBusinesses = alloy.View.extend({
 		businesses.forEach(function(business, index, array){
 			this.injectBusiness(business);
 		  if (index === businesses.length - 1){
-		       	$(App.loader).fadeOut(function(){
-        			$(App.main_container).fadeIn();
-						});
+		       	App.vent.trigger('rendered');
 		  }
 		}, this);
 	},

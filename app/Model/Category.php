@@ -10,4 +10,9 @@ class Category extends AppModel {
       'title' => array('type' => 'string'),
       'contentful_id' => array('type' => 'string')
   );
+
+	public function getCategories() {
+		$categories = $this->find('all');
+		return $categories;
+	}
 }

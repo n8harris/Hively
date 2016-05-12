@@ -25,7 +25,7 @@ if (function_exists('ini_set')) {
 	$root = dirname(dirname(dirname(__FILE__)));
 
 	/* Includes for phpdotenv */
-	require $root.'/vendor/autoload.php';
+	require $root.'/app/Vendor/autoload.php';
 	$dotenv = new Dotenv\Dotenv($root);
 	$dotenv->load();
 
