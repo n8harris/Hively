@@ -12,7 +12,7 @@ App::uses('Socrata', 		'Lib');
  */
 class GetBusiness extends ApiCall {
 
-	protected $_permissions = '*';
+	protected $_permissions = array('user');
 	protected $_validation = array();
 
 	protected function _execute(array $data = array()) {

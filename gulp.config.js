@@ -37,14 +37,13 @@ module.exports = function() {
       vendor: {
         srcFiles: [
           bowerDir + 'bootstrap/dist/css/bootstrap.css',
+					bowerDir + 'bootstrap-select/dist/css/bootstrap-select.css',
           webrootDir + 'css/font-awesome.css'
         ]
       },
       jsApp: {
         srcFiles: [
-          webrootDir + 'css/inner/style.css',
-          webrootDir + 'css/inner/inner.css',
-          webrootDir + 'scss/*.scss'
+          webrootDir + 'scss/style.scss',
         ]
       },
       publicApp: {
@@ -91,6 +90,7 @@ module.exports = function() {
             webrootDir + 'js/lib/development/backbone.routefilter.js',
 
             webrootDir + 'js/lib/development/bootstrap-datepicker.js',
+						bowerDir + 'bootstrap-select/dist/js/bootstrap-select.js',
             //webrootDir + 'js/lib/development/bootstrap.3.3.5.js',
             webrootDir + 'js/lib/development/coda-slider.1.1.1.pack.js.js',
             webrootDir + 'js/lib/development/ddaccordion.js',

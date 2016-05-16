@@ -14,7 +14,8 @@ App.views.PageBusinesses = alloy.View.extend({
 		alloy.Api.getInstance().request({
 			api: 'business',
 			call: 'get',
-			success: this.onBusinesses
+			success: this.onBusinesses,
+			error: this.onBusinessError
 		});
 	},
 
@@ -27,6 +28,11 @@ App.views.PageBusinesses = alloy.View.extend({
 		       	App.vent.trigger('rendered');
 		  }
 		}, this);
+	},
+
+	onBusinessesError: function(response) {
+
+		bootbox.alert(response.message);
 	},
 
 	injectBusiness: function(business) {

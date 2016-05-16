@@ -16,14 +16,12 @@ class CreateResponse extends ApiCall {
 		$userId = isset($session['UserSession']['user_id']) ? trim($session['UserSession']['user_id']) : null;
 		$questionTitle = isset($data['title']) ? trim($data['title']) : null;
 		$questionCategories = isset($data['categories']) ? trim($data['categories']) : null;
-		$totalContribution = isset($data['contribution']) ? trim($data['contribution']) : null;
 
     $responseData = array(
       'Response' => array(
         'user_id' => $userId,
 				'question_title' => $questionTitle,
-				'question_categories' => $questionCategories,
-				'total_contribution' => $totalContribution,
+				'question_categories' => $questionCategories
       )
     );
 

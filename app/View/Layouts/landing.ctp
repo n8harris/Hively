@@ -42,6 +42,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" http-equiv="Content-Type" content="width=device-width"/>
 
 	<title>Member Page</title>
 
@@ -66,6 +67,13 @@
 
 	?>
 
+	<script type='text/javascript'>
+		alloy.Session.getInstance(<?php echo json_encode($bootstrap['session'], JSON_NUMERIC_CHECK);?>);
+		App.Data.getInstance().user = new App.Model(<?php echo json_encode($bootstrap['user'], JSON_NUMERIC_CHECK);?>);
+		App.Data.getInstance().account = new App.Model(<?php echo json_encode($bootstrap['account'], JSON_NUMERIC_CHECK);?>);
+
+	</script>
+
 	<!-- Fav and touch icons -->
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/ico/Icon-144.png">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/ico/Icon-114.png">
@@ -87,8 +95,7 @@
 				</div>
 			</div>
 		<![endif]-->
-
-		<div id='main'></div>
+		<div id='main' class="container"></div>
 
 	</div>
 	<div id="globalFooter"></div>
@@ -97,8 +104,6 @@
 			App.environment = '<?php echo Configure::read('environment');?>';
 
 			$(document).ready(function() {
-				var header = new App.views.ControlHeader();
-				header.inject($("#headerTop"), {method: "replaceWith"});
 
 				var router = App.Router.getInstance();
 

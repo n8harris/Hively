@@ -36,7 +36,7 @@
 	Configure::write('debug', $_ENV['APP_DEBUG_LEVEL']);
 
 	Configure::write('cookie.key', 		$_ENV['COOKIE_KEY']);
-	Configure::write('cookie.name', 	'OAC');
+	Configure::write('cookie.name', 	'Hively');
 	Configure::write('cookie.time', 	$_ENV['COOKIE_TIME']);
 
 	Configure::write('domain', 			$_ENV['APP_URL']); // Full url without ending slash. eg: http://oaclub.local

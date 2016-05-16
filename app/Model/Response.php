@@ -10,8 +10,7 @@ class Response extends AppModel {
   public $mongoSchema = array(
       'user_id' => array('type' => 'objectId'),
       'question_title' => array('type' => 'string'),
-      'question_categories' => array('type' => 'array'),
-      'total_contribution' => array('type' => 'integer')
+      'question_categories' => array('type' => 'array')
   );
 
 }

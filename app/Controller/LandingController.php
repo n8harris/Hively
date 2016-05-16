@@ -30,6 +30,14 @@ class LandingController extends AppController {
 		parent::beforeFilter();
 	}
 
+	function beforeRender() {
+
+		$response = Alloy::instance()->dispatch('user', 'load');
+		$this->set(array('bootstrap' => $response->getData()));
+
+		parent::beforeRender();
+	}
+
 	function afterFilter() {
 
 		$this->Cookie->write('session_id', UserSession::makeUnifiedId(Alloy::instance()->getSession()), false);

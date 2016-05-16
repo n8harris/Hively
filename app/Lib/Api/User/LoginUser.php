@@ -31,7 +31,6 @@ class LoginUser extends ApiCall {
 		}
 
 		$userId		= Credential::validate($username, $password);
-		print_r($userId);
 		if($userId) {
 			$User = new User();
 			$Account = new Account();
@@ -41,7 +40,6 @@ class LoginUser extends ApiCall {
 				return new ApiResponse(null, -1, "An error was encountered while logging in.", "Unable to load user record associated with credentials.");
 			}
 
-			print_r($session);
 			$UserSession = new UserSession();
 			if(!$session = $UserSession->login($session['UserSession']['id'], $user)) {
 				return new ApiResponse(null, -1, "An error was encountered while logging in.", "Unable to attach user to session.");
@@ -55,8 +53,7 @@ class LoginUser extends ApiCall {
 
 			$response = array(
 				'user' => $user['User'],
-				'account' => $account['Account'],
-				'session' => Alloy::instance()->getSession()
+				'account' => $account['Account']
 			);
 
 			return new ApiResponse($response);

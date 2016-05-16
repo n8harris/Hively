@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 * {
 	margin: 0;
 }
@@ -7,11 +9,30 @@ html {
 }
 body {
     margin: 0 0 100px;
+		background: $blue-bg;
+		font-family: 'Roboto', sans-serif;
+
+		h6 {
+			text-transform: uppercase;
+	    font-size: 15px;
+	    color: white;
+	    font-weight: 300;
+	    margin-bottom: 15px;
+		}
+
+		h5 {
+			text-transform: uppercase;
+			font-size: 18px;
+			color: white;
+			font-weight: 300;
+			margin-bottom: 10px;
+		}
 }
 #main {
   padding-top: 55px;
 }
 #inner-outer {
+	color: #fff;
   min-height: 100%;
 	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
 	height: 100%;
@@ -29,6 +50,60 @@ body {
   @keyframes beat{
   	to { transform: scale(1.4); }
   }
+
+	.login-box {
+		text-align: center;
+	}
+
+	.form-control {
+		border: none;
+		padding: 0px;
+	}
+
+	.landing-image {
+		float: none;
+    margin: 0 auto;
+		margin-top: -55px;
+	}
+
+	.full-width {
+		width: 100%;
+	}
+
+	#bottom-button-bar {
+		position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: $blue-bg;
+	}
+
+	.sign-in-btn {
+		background: $dark-blue;
+		a {
+			&:hover {
+				background: $dark-blue-hover;
+			}
+		}
+	}
+
+	.sign-up-btn {
+		a {
+			&:hover {
+				background: $nav-bg;
+			}
+		}
+	}
+
+	#splash-slogan {
+		text-align: center;
+	}
+
+	.centered-column {
+		float: none;
+		margin: 0 auto;
+	}
 }
 
 #globalFooter {
@@ -38,3 +113,16 @@ body {
   height: 100px;
   width: 100%;
 }
+
+@media (max-width: 47.9em) {
+	.row {
+		margin: 0 0 0 0;
+	}
+}
+
+@import "buttons.scss";
+@import "header.scss";
+@import "login.scss";
+@import "login-header.scss";
+@import "login-footer.scss";
+@import "slider.scss";

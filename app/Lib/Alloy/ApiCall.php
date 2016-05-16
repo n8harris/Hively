@@ -64,7 +64,7 @@ class ApiCall {
 			return new ApiResponse(null, ApiCall::NOT_AUTHORIZED, "Not authorized");
 		}
 		if(!$this->_checkValidation($data)) {
-			return new ApiResponse(null, ApiCall::INVALID_REQUEST, "Request parameters were invalid.", $this->_validationErrors);
+			return new ApiResponse(null, ApiCall::INVALID_REQUEST, "Please fill out all fields", $this->_validationErrors);
 		}
 
 		return $this->_execute($data);
@@ -99,7 +99,7 @@ class ApiCall {
 
 		// required keys
 		foreach($this->_validation as $key => $rules) {
-			if(isset($rules['required']) && $rules['required'] == true && !isset($data[$key])) {
+			if(isset($rules['required']) && $rules['required'] == true && empty($data[$key])) {
 				$this->_validationErrors[$key] = "Missing required field";
 			}
 		}

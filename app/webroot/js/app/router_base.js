@@ -17,10 +17,10 @@ App.RouterBase = Backbone.Router.extend({
 	before: function(route, name, args) {
 
 		// verify user can load the view
-		if(!App.Data.getInstance().isLoggedIn() && !this.isPublic(name)) {
+		if(!alloy.Session.getInstance().isLoggedIn() && !this.isPublic(name)) {
 			App.onLogin = window.location.hash;
 
-			this.navigate("#login", {trigger: true});
+			this.navigate("login", {trigger: true});
 			return false;
 		}
 
@@ -42,11 +42,30 @@ App.RouterBase = Backbone.Router.extend({
 
 		event.stopPropagation();
 
-		this.navigate("login?timeout=1", {trigger: false});
+		this.navigate("login", {trigger: false});
 
 		window.location.reload();
 	},
 	showView: function(view) {
+		var header;
+		var footer;
+		if (App.login) {
+			header = new App.views.ControlLoginHeader();
+			footer = new App.views.ControlLoginFooter();
+			App.login = false;
+			App.register = false;
+		} else if (App.questions) {
+			header = new App.views.ControlQuestionsHeader();
+			footer = new App.views.ControlQuestionsFooter();
+			App.questions = false;
+		} else {
+			header = new App.views.ControlHeader();
+		}
+
+		if (footer) {
+			footer.inject($("#globalFooter"), {method: "replaceWith"});
+		}
+		header.inject($("#headerTop"), {method: "replaceWith"});
 		this.listenTo(App.vent, 'rendered', function(){
 			$(App.loader).fadeOut(300, function(){
 				$(App.main_container).fadeIn(500);
