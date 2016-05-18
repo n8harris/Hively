@@ -17,6 +17,7 @@ app/tmp/logs/*
 app/webroot/js/build/*
 app/webroot/css/build/*
 webroot/
+!app/webroot
 app/webroot/assets/*
 app/Vendor/*
 
