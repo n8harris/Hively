@@ -1,0 +1,37 @@
+<div class="register-container">
+	<div class="row login-box">
+		{{if business}}
+		<div class="select-container">
+			<h5>Select Business to Claim</h5>
+			<select name="business" class="business-select"></select>
+		</div>
+		{{/if}}
+	  <h5>Create Your Account</h5>
+	  <form>
+	    <ul class="list-group">
+				<li class="list-group-item">
+				 		<input type="text" class="form-control" name="firstname" placeholder="First Name">
+				 </li>
+				 <li class="list-group-item">
+ 				 		<input type="text" class="form-control" name="lastname" placeholder="Last Name">
+ 				 </li>
+				 <li class="list-group-item">
+			      <input type="text" class="form-control" name="username" placeholder="User Name">
+			   </li>
+	       <li class="list-group-item">
+	      		<input type="text" class="form-control" name="password" placeholder="Password">
+	       </li>
+	       <li class="list-group-item">
+	      	<input type="text" class="form-control" name="email" placeholder="Email Address">
+	       </li>
+	        <li class="list-group-item">
+	      	<input type="text" class="form-control" name="phone" placeholder="Phone">
+	       </li>
+	        <li class="list-group-item">
+	      	<input type="text" class="form-control" name="birthday" placeholder="Date of Birth">
+	       </li>
+	    	<input type="submit" class="btn yellow-submit hively-button" value="Create" />
+	    </ul>
+	  </form>
+  </div>
+</div>

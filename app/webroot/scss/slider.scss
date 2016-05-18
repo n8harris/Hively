@@ -1,0 +1,107 @@
+.slider-container {
+	margin-top: 100px;
+	h5 {
+		text-align: center;
+	}
+	input[type=range] {
+		-webkit-appearance: none;
+	  width: 100%;
+	  margin: 60px 0 5.95px;
+
+		&:focus {
+  		outline: none;
+		}
+		&::-webkit-slider-runnable-track {
+		  width: 100%;
+		  height: 5.1px;
+		  cursor: pointer;
+		  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+		  background: #f4c300;
+		  border-radius: 3.7px;
+		  border: 0px solid #010101;
+		}
+		&::-webkit-slider-thumb {
+		  box-shadow: 0.9px 0.9px 1px #000031, 0px 0px 0.9px #00004b;
+		  border: 0px solid #ffffff;
+		  height: 17px;
+		  width: 3px;
+		  border-radius: 50px;
+		  background: #234958;
+		  cursor: pointer;
+		  -webkit-appearance: none;
+		  margin-top: -5.95px;
+		}
+		&:focus::-webkit-slider-runnable-track {
+		  background: #ffcf0f;
+		}
+		&::-moz-range-track {
+		  width: 100%;
+		  height: 5.1px;
+		  cursor: pointer;
+		  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+		  background: #f4c300;
+		  border-radius: 3.7px;
+		  border: 0px solid #010101;
+		}
+		&::-moz-range-thumb {
+		  box-shadow: 0.9px 0.9px 1px #000031, 0px 0px 0.9px #00004b;
+		  border: 0px solid #ffffff;
+		  height: 17px;
+		  width: 3px;
+		  border-radius: 50px;
+		  background: #234958;
+		  cursor: pointer;
+		}
+		&::-ms-track {
+		  width: 100%;
+		  height: 5.1px;
+		  cursor: pointer;
+		  background: transparent;
+		  border-color: transparent;
+		  color: transparent;
+		}
+		&::-ms-fill-lower {
+		  background: #dbaf00;
+		  border: 0px solid #010101;
+		  border-radius: 7.4px;
+		  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+		}
+		&::-ms-fill-upper {
+		  background: #f4c300;
+		  border: 0px solid #010101;
+		  border-radius: 7.4px;
+		  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+		}
+		&::-ms-thumb {
+		  box-shadow: 0.9px 0.9px 1px #000031, 0px 0px 0.9px #00004b;
+		  border: 0px solid #ffffff;
+		  height: 17px;
+		  width: 3px;
+		  border-radius: 50px;
+		  background: #234958;
+		  cursor: pointer;
+		  height: 5.1px;
+		}
+		&:focus::-ms-fill-lower {
+		  background: #f4c300;
+		}
+		&:focus::-ms-fill-upper {
+		  background: #ffcf0f;
+		}
+	}
+
+	.range-label {
+		p {
+			color: white;
+	    text-transform: uppercase;
+	    font-weight: 300;
+	    padding: 0px;
+	    font-size: 14px;
+		}
+	}
+
+	.submit-container {
+		text-align: center;
+		margin-top: 70px;
+	}
+}

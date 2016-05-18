@@ -25,7 +25,8 @@ class User extends AppModel {
       'status' => array('type' => 'string'),
       'birthday' => array('type' => 'date'),
       'account_id' => array('type' => 'objectId'),
-			'bio' => array('type' => 'string')
+			'bio' => array('type' => 'string'),
+			'answered' => array('type' => 'bool')
   );
 
 	public function uniqueEmail($email) {

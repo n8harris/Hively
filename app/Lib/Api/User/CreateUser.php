@@ -2,6 +2,7 @@
 
 App::uses('ApiCall', 		'Lib/Alloy');
 App::uses('User', 			'Model');
+App::uses('Business', 			'Model');
 App::uses('Account',		'Model');
 App::uses('Credential', 	'Model');
 App::uses('UserSession', 	'Model');
@@ -22,7 +23,9 @@ class CreateUser extends ApiCall {
 
 		'birthday'		=> array('required' => true),
 
-		'role'					=> array('required' => false)
+		'role'					=> array('required' => false),
+
+		'business_id' => array('required' => false)
 	);
 
 	protected function _execute(array $data = array()) {
@@ -37,7 +40,7 @@ class CreateUser extends ApiCall {
 		$prefixName 	= isset($data['prefix_name']) ? trim($data['prefix_name']) : null;
 		$suffixName 	= isset($data['suffix_name']) ? trim($data['suffix_name']) : null;
 
-		$avatarId		= isset($data['profile_pic_url']) ? trim($data['profile_pic_url']) : null;
+		$profilePic		= isset($data['profile_pic_url']) ? trim($data['profile_pic_url']) : null;
 
 		$gender 		= isset($data['gender']) ? $data['gender'] : 'female';
 		$email 			= isset($data['email']) ? trim($data['email']) : null;
@@ -47,6 +50,7 @@ class CreateUser extends ApiCall {
 
 		$birthday 	= isset($data['birthday']) ? $data['birthday'] : null;
 		$role 	= isset($data['role']) ? $data['role'] : 'user';
+		$businessId 	= isset($data['business_id']) ? $data['business_id'] : null;
 		$session 		= Alloy::instance()->getSession();
 
     $accountData = array(
@@ -66,14 +70,16 @@ class CreateUser extends ApiCall {
 				'middle_name' => $middleName,
 				'prefix_name' => $prefixName,
 				'suffix_name' => $suffixName,
-				'profile_pic_url' => $avatarId,
+				'profile_pic_url' => Configure::read('user.profile_pic'),
 				'gender' => $gender,
 				'username' => $username,
 				'role' => $role,
 				'birthday' => $birthday,
         'status' => 'new',
         'account_id' => $account['Account']['id'],
-				'last_login_date' => null
+				'last_login_date' => null,
+				'answered' => false,
+				'email' => $email
 			)
 		);
 		if($email) {
@@ -104,6 +110,16 @@ class CreateUser extends ApiCall {
 			$UserSession = new UserSession();
 			$session = $UserSession->login($session['UserSession']['id'], $user);
 			Alloy::instance()->setSession($session);
+		}
+
+		if ($role == 'business') {
+			$Business = new Business();
+			$businessData = array();
+			$businessData['id'] = $businessId;
+			$businessData['account_id'] = $account['Account']['id'];
+			$businessData['profile_pic_url'] = Configure::read('business.profile_pic');
+			$businessData['claimed'] = true;
+			$business = $Business->saveAll($businessData, array('fieldlist' => array('Business' => array('account_id', 'profile_pic_url', 'claimed'))));
 		}
 
 		$return = array(

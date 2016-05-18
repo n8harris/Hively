@@ -1,0 +1,26 @@
+.login-container {
+
+	.login-box {
+		text-align: center;
+	}
+
+	.form-control {
+		border: none;
+		padding: 0px;
+	}
+
+	.yellow-submit {
+		background-color: $nav-bg;
+    border-radius: 0px 0px 5px 5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: white;
+    font-weight: 700;
+    width: 100%;
+    padding: .75rem 1.25rem;
+		&:hover {
+			background: $nav-dark-yellow;
+			text-decoration: none;
+		}
+	}
+}

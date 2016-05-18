@@ -1,0 +1,61 @@
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background:darken($bg,5%);
+    transition: all 0.3s ease;
+		color: #fff;
+  }
+  &:active {
+    background:darken($bg,8%);
+  }
+}
+
+.btn {
+ color:white;
+ text-decoration:none;
+ padding:5px 10px;
+ border-radius:3px;
+ font-family: 'Roboto', sans-serif;
+ font-size:1em;
+ text-transform: uppercase;
+}
+
+.btn-yellow {
+	@include button-bg($nav-bg);
+}
+
+.btn-blue {
+	@include button-bg($dark-blue);
+}
+
+a, button, input {
+	&.hively-button {
+		display: block;
+		padding: 15px 0px 11px;
+		color: #fff;
+		-o-transition:color .1s ease-out, background .2s ease-in;
+		-ms-transition:color .1s ease-out, background .2s ease-in;
+		-moz-transition:color .1s ease-out, background .2s ease-in;
+		-webkit-transition:color .1s ease-out, background .2s ease-in;
+		/* ...and now override with proper CSS property */
+		transition:color .1s ease-out, background .2s ease-in;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.yellow-submit {
+	background-color: $nav-bg;
+	border-radius: 0px 0px 5px 5px;
+	text-transform: uppercase;
+	font-size: 15px;
+	color: white;
+	font-weight: 700;
+	width: 100%;
+	padding: .75rem 1.25rem;
+	&:hover {
+		background: $nav-dark-yellow;
+		text-decoration: none;
+	}
+}

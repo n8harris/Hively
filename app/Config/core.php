@@ -45,6 +45,13 @@
 	Configure::write('colorado.key', $_ENV['COLORADO_MARKETPLACE_KEY']);
 	Configure::write('contentful.key', $_ENV['CONTENTFUL_API_KEY']);
 	Configure::write('contentful.space', $_ENV['CONTENTFUL_SPACE_ID']);
+	Configure::write('questions.multiple_value', 100);
+	Configure::write('colorado.limitkey', '$limit');
+	Configure::write('colorado.offsetkey', '$offset');
+	Configure::write('colorado.statuskey', 'entitystatus');
+	Configure::write('colorado.status', 'Good Standing');
+	Configure::write('user.profile_pic', 'img/default-user-profile.jpg');
+	Configure::write('business.profile_pic', 'img/default-business-profile.jpg');
 
 
 	// TEST

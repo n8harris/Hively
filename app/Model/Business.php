@@ -14,5 +14,7 @@ class Business extends AppModel {
 			'state' => array('type' => 'string'),
 			'zip' => array('type' => 'string'),
 			'description' => array('type' => 'string'),
+			'profile_pic_url' => array('type' => 'string'),
+			'claimed' => false
   );
 }

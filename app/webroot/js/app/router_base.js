@@ -57,8 +57,12 @@ App.RouterBase = Backbone.Router.extend({
 		} else if (App.questions) {
 			header = new App.views.ControlQuestionsHeader();
 			App.questions = false;
+		} else if (App.choose_path) {
+			header = new App.views.ControlLoginHeader();
+			footer = new App.views.ControlFooter();
+			App.choose_path = false;
 		} else {
-			$("#globalFooter").empty();
+			$(App.footer_container).empty();
 			header = new App.views.ControlHeader();
 			footer = new App.views.ControlFooter();
 		}

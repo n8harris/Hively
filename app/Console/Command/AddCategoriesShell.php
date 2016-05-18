@@ -1,10 +1,5 @@
 <?php
 
-/*
-  Migrate data for flex payment options.
-  New Tables: Orders, Transactions
- */
-
 class AddCategoriesShell extends AppShell {
 
   public $uses = array('Category');
@@ -23,7 +18,6 @@ class AddCategoriesShell extends AppShell {
 					$addCategory = false;
 				}
 			}
-			var_dump($contentfulCategory);
 			if ($addCategory) {
 				$categoryData = array(
 		      'Category' => array(

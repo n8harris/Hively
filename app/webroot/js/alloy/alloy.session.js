@@ -117,6 +117,9 @@ alloy.Session.prototype.swallowApiCall = function (response) {
 			case 'user':
 				this._loggedIn = true;
 				break;
+			case 'business':
+				this._loggedIn = true;
+				break;
 		}
 	}
 

@@ -38,6 +38,7 @@ module.exports = function() {
         srcFiles: [
           bowerDir + 'bootstrap/dist/css/bootstrap.css',
 					bowerDir + 'bootstrap-select/dist/css/bootstrap-select.css',
+					bowerDir + 'select2/dist/css/select2.css',
           webrootDir + 'css/font-awesome.css'
         ]
       },
@@ -104,6 +105,7 @@ module.exports = function() {
             webrootDir + 'js/lib/development/purl.js',
             //webrootDir + 'js/lib/development/underscore.1.4.4.js',
             webrootDir + 'js/lib/development/bootbox.4.4.js',
+						bowerDir + "select2/dist/js/select2.js"
           ]
         },
         publicApp: {

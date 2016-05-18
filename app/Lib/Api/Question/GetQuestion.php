@@ -18,6 +18,8 @@ class GetQuestion extends ApiCall {
 		$client = new \Contentful\Delivery\Client(Configure::read('contentful.key'), Configure::read('contentful.space'));
 		$query = new \Contentful\Query();
 		$query->setContentType('question');
+		$isBusiness = isset($data['business']) ? trim($data['business']) : 'false';
+		$query->where('fields.isBusinessQuestion', $isBusiness);
 		$questions = $client->getEntries($query);
 		$questionsList = array();
 

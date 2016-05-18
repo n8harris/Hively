@@ -7,16 +7,18 @@ class Socrata {
 	public function getBusinesses($limit, $offset) {
 
 		$url = $this->url;
-    if ($limit || $offset) {
-      $url = $url . "?";
-      if($limit && $offset) {
-        $url = $url . '$limit=' . $limit . '&$offset=' . $offset;
-      } else if ($limit) {
-        $url = $url . '$limit=' . $limit;
-      } else if ($offset) {
-        $url = $url . '$offset=' . $offset;
-      }
-    }
+		$data = array (
+			Configure::read('colorado.statuskey') => Configure::read('colorado.status')
+		);
+		if ($limit > 0) {
+			$data[Configure::read('colorado.limitkey')] = $limit;
+		}
+
+		if ($offset > 0) {
+			$data[Configure::read('colorado.offsetkey')] = $offset;
+		}
+		$queryString = http_build_query($data);
+    $url .= '?' . $queryString;
 
 		$data = $this->_curlRequest($url);
 
