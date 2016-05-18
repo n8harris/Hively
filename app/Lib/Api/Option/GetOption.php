@@ -11,7 +11,7 @@ App::uses('ApiCall', 		'Lib/Alloy');
  */
 class GetOption extends ApiCall {
 
-	protected $_permissions = array('user');
+	protected $_permissions = array('user', 'business');
 	protected $_validation = array(
 		'option' 	=> array('required' => true)
 	);

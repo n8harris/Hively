@@ -11,7 +11,7 @@ App::uses('ApiCall', 		'Lib/Alloy');
  */
 class GetQuestion extends ApiCall {
 
-	protected $_permissions = array('user');
+	protected $_permissions = array('user', 'business');
 	protected $_validation = array();
 
 	protected function _execute(array $data = array()) {
@@ -32,6 +32,7 @@ class GetQuestion extends ApiCall {
 				$multiple = $client->getEntry($option->getId());
 				$contrib = $multiple->getCategoryContribution();
 				$questionOptionsPush['title'] = $multiple->getTitle();
+				$questionOptionsPush['id'] = $option->getId();
 				if (!empty($contrib)) {
 					$category = $contrib->getCategory();
 					$questionOptionsPush['categories'] = array();

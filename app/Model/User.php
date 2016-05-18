@@ -24,7 +24,8 @@ class User extends AppModel {
       'last_login_date' => array('type' => 'date'),
       'status' => array('type' => 'string'),
       'birthday' => array('type' => 'date'),
-      'account_id' => array('type' => 'objectId')
+      'account_id' => array('type' => 'objectId'),
+			'bio' => array('type' => 'string')
   );
 
 	public function uniqueEmail($email) {

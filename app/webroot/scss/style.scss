@@ -112,6 +112,12 @@ body {
   bottom: 0;
   height: 100px;
   width: 100%;
+	hr {
+		margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+	}
 }
 
 @media (max-width: 47.9em) {
@@ -126,3 +132,4 @@ body {
 @import "login-header.scss";
 @import "login-footer.scss";
 @import "slider.scss";
+@import "questions-footer.scss";

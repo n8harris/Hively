@@ -14,14 +14,23 @@ class CreateResponse extends ApiCall {
 		$session 	= Alloy::instance()->getSession();
 
 		$userId = isset($session['UserSession']['user_id']) ? trim($session['UserSession']['user_id']) : null;
-		$questionTitle = isset($data['title']) ? trim($data['title']) : null;
-		$questionCategories = isset($data['categories']) ? trim($data['categories']) : null;
+		$questionTitle = isset($data['question_title']) ? trim($data['question_title']) : null;
+		$questionCategories = isset($data['categories']) ? $data['categories'] : null;
+		$questionPoints = isset($data['points']) ? trim($data['points']) : null;
+		$categoriesPoints = array();
+
+		foreach ($questionCategories as $category) {
+			$categoryPush = array();
+			$categoryPush['points'] = $questionPoints * $category['contribution'];
+			$categoryPush['id'] = $category['id'];
+			array_push($categoriesPoints, $categoryPush);
+		}
 
     $responseData = array(
       'Response' => array(
         'user_id' => $userId,
 				'question_title' => $questionTitle,
-				'question_categories' => $questionCategories
+				'question_categories' => $categoriesPoints
       )
     );
 
