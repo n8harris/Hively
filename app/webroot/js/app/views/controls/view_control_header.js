@@ -4,8 +4,13 @@ App.views.ControlHeader = alloy.View.extend({
 	id: "headerTop",
 
 	events: {
-    "click .hamburger": "onMenuClick",
-		"click .logout": "onLogoutClick"
+    "click .hamburger": "onMobileMenuClick",
+		"click .logout": "onLogoutClick",
+		"click #usernameLink": "onUsernameLinkClick",
+		"click .mobile-menu": "onMobileMenuClick",
+		"click .slide-out-overlay": "onMobileMenuClick",
+		"click .close-nav": "onMobileMenuClick",
+		"click .slide-out a": "onMobileMenuClick",
 	},
 
 	_initialize: function(options) {
@@ -17,13 +22,22 @@ App.views.ControlHeader = alloy.View.extend({
 			}));
 	},
 
-  onMenuClick: function(){
-    if(!$('.dropdown-menu-h').hasClass('active')){
-      $('.dropdown-menu-h').show().addClass('active');
-    } else {
-      $('.dropdown-menu-h').hide().removeClass('active');
-    }
-  },
+	onMobileMenuClick: function(){
+		var slideOut = $('.slide-out');
+		if (slideOut.hasClass('active')){
+			this.closeNav(slideOut);
+		} else {
+			this.openNav(slideOut);
+		}
+	},
+	closeNav: function(el){
+		el.removeClass('active');
+		$('html').removeClass('menu-open');
+	},
+	openNav: function(el){
+		el.addClass('active');
+		$('html').addClass('menu-open');
+	},
 	onLogoutClick: function(event) {
 		event.preventDefault();
 

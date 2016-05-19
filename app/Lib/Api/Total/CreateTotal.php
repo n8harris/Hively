@@ -17,6 +17,7 @@ class CreateTotal extends ApiCall {
 		$session 	= Alloy::instance()->getSession();
 
 		$userId = isset($session['UserSession']['user_id']) ? trim($session['UserSession']['user_id']) : null;
+		$role = isset($session['UserSession']['role']) ? trim($session['UserSession']['role']) : null;
 		$categoryTotals = array();
 		$responses = $Response->find('all', array(
         'conditions' => array('user_id' => $userId)
@@ -43,6 +44,7 @@ class CreateTotal extends ApiCall {
     $totalData = array(
       'CategoryTotal' => array(
         'user_id' => $userId,
+				'role' => $role,
 				'category_totals' => $categoryTotals
       )
     );

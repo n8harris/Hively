@@ -1,10 +1,23 @@
 <div class="row">
-	<div class="col-xs-12 col-md-10 col-lg-8 centered-column profile-card">
-		<div class="profile-pic" style="background: url('{{:profile_pic}}') no-repeat">
-			<h5 class="user-name">{{:first_name}} {{:last_name}}</h5>
-		</div>
-		<div class="card-content">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vestibulum finibus varius. Quisque sed venenatis sapien. Maecenas blandit lacus nec lacus condimentum fringilla finibus id metus. Pellentesque gravida erat id nunc posuere lobortis. Quisque pretium nisi enim, et consectetur arcu volutpat eget. Donec ut diam a magna pharetra commodo a id orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque nec convallis velit. Etiam pulvinar nisl vel ante laoreet euismod. Aenean commodo magna quis turpis auctor placerat. Nullam tristique porta efficitur. Integer in justo id tellus aliquet tristique id eu mauris. Quisque tincidunt ac felis a congue.</p>
+	<div class="col-xs-12 col-md-10 col-lg-8 centered-column profile-column">
+		<div class="profile-card" id="{{:match_id}}">
+			<div class="profile-pic" style="background: url('{{:profile_pic}}') no-repeat">
+				<h5 class="user-name">{{if business}}{{:name}}{{else}}{{:first_name}} {{:last_name}}{{/if}}</h5>
+			</div>
+			<div class="card-content">
+				{{if match}}
+				<div class="col-xs-5 col-sm-4 centered-column match-column">
+					<h5 class="match-heading {{:heading_class}}">{{:percentage}}% Match</h5>
+				</div>
+				{{/if}}
+				<p>
+					{{if business}}
+					{{:line1}}, {{:city}}, {{:state}} {{:zip}}
+					{{else}}
+					{{:bio}}
+					{{/if}}
+				</p>
+			</div>
 		</div>
 	</div>
 </div>

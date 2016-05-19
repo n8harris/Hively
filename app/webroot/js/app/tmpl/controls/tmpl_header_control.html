@@ -1,28 +1,35 @@
 <div id="navigation">
    <div class="row">
-     <div class="col-sm-12">
-       <div class="col-sm-6">
-         <div class="pull-left">
+			 <div class="hamburger-menu">
+				 <i class="fa fa-bars hamburger"></i>
+			 </div>
+       <div class="col-sm-6 centered-column">
            <img class="nav-logo" src="/img/Hively.svg" />
-         </div>
        </div>
-       <div class="col-sm-6">
-         <div class="pull-right">
-           <i class="fa fa-bars hamburger"></i>
-         </div>
-       </div>
-     </div>
    </div>
-   <div class="dropdown-menu-h">
-     <ul class="dropdown-items">
-       <li>Interview Queue</li>
-       <li>Connections</li>
-       <li>Settings</li>
-       <li>
-         <img class="profile-img" src="/img/sample-profile.jpg" />
-         <span class="profile-text">{{:user.first_name}} {{:user.last_name}}</span>
-       </li>
-			 <li class="logout">Logout</li>
-     </ul>
-   </div>
+</div>
+<div class="slide-out">
+	<div class="slide-out-overlay"></div>
+	<div class="slide-out-nav">
+		<div class="row member-info">
+			<div class="col-xs-10 member-details">
+				<img src="{{:user.profile_pic_url}}" width="80" height="80" alt="">
+				<h1 class="member-name">{{:user.first_name}} {{:user.last_name}}</h1>
+				<h1 class="member-email">{{:user.email}}</h1>
+			</div>
+			<div class="col-xs-2">
+				<div class="pull-right">
+					<i class="fa fa-times close-nav"></i>
+				</div>
+			</div>
+		</div>
+		<div class="main-menu">
+			<ul id="main-list" class="nav-options">
+				<li class="nav-mobile-menu"><a href="#matches">Matches</a></li>
+				<li class="nav-mobile-menu"><a href="#connections">Connections</a></li>
+				<hr />
+				<li class="signout logout"><a href="#">Sign out</a></li>
+			</ul>
+		</div>
+	</div>
 </div>

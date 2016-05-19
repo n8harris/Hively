@@ -7,7 +7,9 @@ App.Router = App.RouterBase.extend({
 		"questions": "questions",
 		"choose_path": "choose_path",
 		"register_business": "register_business",
-		"profile": "profile"
+		"profile": "profile",
+		"connections": "connections",
+		"matches": "matches"
 	},
 	public: [
 		"login",
@@ -18,7 +20,9 @@ App.Router = App.RouterBase.extend({
 	require_active_account: [
 		"businesses",
 		"questions",
-		"profile"
+		"profile",
+		"connections",
+		"matches"
 	],
 
 	login: function(opt_params) {
@@ -56,6 +60,14 @@ App.Router = App.RouterBase.extend({
 	},
 	profile: function(opt_params) {
 			var view = new App.views.PageProfile();
+			this.showView(view);
+	},
+	connections: function(opt_params) {
+			var view = new App.views.PageConnections();
+			this.showView(view);
+	},
+	matches: function(opt_params) {
+			var view = new App.views.PageMatches();
 			this.showView(view);
 	}
 });

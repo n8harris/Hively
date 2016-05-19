@@ -1,0 +1,19 @@
+.connection-container {
+	position: relative;
+	background-size: cover !important;
+	background-position: center !important;
+	height: 300px;
+	margin-bottom: 30px;
+	border-radius: 4px;
+	-webkit-box-shadow: 1px 3px 0px 0px rgba(211, 211, 211, 1);
+	-moz-box-shadow:    1px 3px 0px 0px rgba(211, 211, 211, 1);
+	box-shadow:         1px 3px 0px 0px rgba(211, 211, 211, 1);
+	.user-name {
+		position: absolute;
+		color: #fff;
+		top: 20px;
+		left: 15px;
+		font-size: 16px;
+		font-weight: 600;
+	}
+}

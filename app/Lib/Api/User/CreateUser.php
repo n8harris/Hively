@@ -79,7 +79,8 @@ class CreateUser extends ApiCall {
         'account_id' => $account['Account']['id'],
 				'last_login_date' => null,
 				'answered' => false,
-				'email' => $email
+				'email' => $email,
+				'bio' => ''
 			)
 		);
 		if($email) {

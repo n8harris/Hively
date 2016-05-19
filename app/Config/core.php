@@ -50,8 +50,10 @@
 	Configure::write('colorado.offsetkey', '$offset');
 	Configure::write('colorado.statuskey', 'entitystatus');
 	Configure::write('colorado.status', 'Good Standing');
-	Configure::write('user.profile_pic', 'img/default-user-profile.jpg');
-	Configure::write('business.profile_pic', 'img/default-business-profile.jpg');
+	Configure::write('user.profile_pic', 'img/default-user-profile.png');
+	Configure::write('business.profile_pic', 'img/default-business-profile.png');
+	Configure::write('match.num_category', 1);
+	Configure::write('match.total_difference', 40);
 
 
 	// TEST

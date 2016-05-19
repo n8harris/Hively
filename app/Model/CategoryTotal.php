@@ -8,6 +8,7 @@ class CategoryTotal extends AppModel {
   var $useDbConfig = 'mongo';
   public $mongoSchema = array(
       'user_id' => array('type' => 'objectId'),
+			'role' => array('type' => 'string'),
       'category_totals' => array('type' => 'array')
   );
 }

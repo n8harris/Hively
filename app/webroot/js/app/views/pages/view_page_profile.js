@@ -18,7 +18,8 @@ App.views.PageProfile = alloy.View.extend({
 		$(this.profileContainer, this.el).append($(App.tmpl.tmpl_partial_profile_card).render({
 			first_name: this.user.get('first_name'),
 			last_name: this.user.get('last_name'),
-			profile_pic: this.user.get('profile_pic_url')
+			profile_pic: this.user.get('profile_pic_url'),
+			bio: this.user.get('bio')
 		}));
 		App.vent.trigger('rendered');
 	}
