@@ -30,7 +30,8 @@
     "backbone.routeFilter": "~0.2.1",
     "jquery.placeholder": "~0.2.4",
     "moment": "~2.10.3",
-		"select2": "~4.0.2"
+		"select2": "~4.0.2",
+		"jTinder": "git@github.com:n8harris/jTinder.git#14e4b4d"
   },
   "devDependencies": {}
 }

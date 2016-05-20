@@ -23,8 +23,8 @@ class ListAllMatch extends ApiCall {
 
 		$userId = isset($session['UserSession']['user_id']) ? trim($session['UserSession']['user_id']) : null;
 		$role = isset($session['UserSession']['role']) ? trim($session['UserSession']['role']) : null;
-		$reviewed = isset($data['reviewed']) ? trim($data['reviewed']) : 0;
-		$approved = isset($data['approved']) ? trim($data['approved']) : 0;
+		$reviewed = isset($data['reviewed']) ? $data['reviewed'] : "false";
+		$approved = isset($data['approved']) ? $data['approved'] : "false";
 
     $matches = $Match->find('all', array(
 			'conditions' => array(
@@ -33,21 +33,26 @@ class ListAllMatch extends ApiCall {
 				'approved' => $approved
 			)
 		));
+
 		$users = array();
 		$businesses = array();
 		foreach($matches as $match) {
 			$user = $User->findById($match['Match']['match_id']);
-			$user = $user['User'];
-			if ($role == 'user') {
-				$business = $Business->findByAccountId($user['account_id']);
-				$business = $business['Business'];
-				$business['percentage'] = round($match['Match']['match_percentage']);
-				$business['match_id'] = $match['Match']['id'];
-				$businesses[] = $business;
-			} else {
-				$user['percentage'] = round($match['Match']['match_percentage']);
-				$user['match_id'] = $match['Match']['id'];
-				$users[] = $user;
+			if (!empty($user)) {
+				$user = $user['User'];
+				if ($role == 'user') {
+					$business = $Business->find('first', array('conditions' => array('account_id' => $user['account_id'])));
+					if (!empty($business)) {
+						$business = $business['Business'];
+						$business['percentage'] = round($match['Match']['match_percentage']);
+						$business['match_id'] = $match['Match']['id'];
+						$businesses[] = $business;
+					}
+				} else {
+					$user['percentage'] = round($match['Match']['match_percentage']);
+					$user['match_id'] = $match['Match']['id'];
+					$users[] = $user;
+				}
 			}
 		}
 

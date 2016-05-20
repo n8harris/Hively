@@ -73,7 +73,9 @@ App.RouterBase = Backbone.Router.extend({
 		header.inject($("#headerTop"), {method: "replaceWith"});
 		this.listenTo(App.vent, 'rendered', function(){
 			$(App.loader).fadeOut(300, function(){
-				$(App.main_container).fadeIn(500);
+				$(App.main_container).fadeIn(500, function(){
+					App.vent.trigger('loaded');
+				});
 			});
 		});
 		if(this.currentView) {

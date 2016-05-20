@@ -73,8 +73,8 @@ class GetMatch extends ApiCall {
 						'user_id' => $userId,
 						'match_id' => $comparisonTotal['user_id'],
 						'match_percentage' => $totalMatchPercentage,
-						'reviewed' => 0,
-						'approved' => 0
+						'reviewed' => "false",
+						'approved' => "false"
 					)
 				);
 				$Match->save($matchData);

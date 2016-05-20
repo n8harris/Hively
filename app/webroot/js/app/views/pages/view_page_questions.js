@@ -37,6 +37,7 @@ App.views.PageQuestions = alloy.View.extend({
 			success: this.onQuestions,
 			error: this.onQuestionsError
 		});
+
 	},
 
 	onQuestions: function(response) {
@@ -60,7 +61,7 @@ App.views.PageQuestions = alloy.View.extend({
 
 		if(this.validateForm()) {
 			if (!this.question.multiple) {
-				var lastQuestion = false;
+				var lastQuestion = "false";
 				if($('.slider-range').prop("min") != '0' || $('.slider-range').prop("max") != '200') {
 					bootbox.alert("Unable to submit question");
 				} else {
@@ -72,13 +73,14 @@ App.views.PageQuestions = alloy.View.extend({
 						this.chosenOption = this.getByIdValue(this.question.options, this.right_value);
 					}
 					if(this.questions.length == 0){
-						lastQuestion = true;
+						lastQuestion = "true";
 					}
 					alloy.Api.getInstance().request({
 						api: 'response',
 						call: 'create',
 						data: {
 							question_title: this.question.title,
+							question_id: this.question.id,
 							points: this.sliderPoints,
 							categories: this.chosenOption.categories,
 							last_question: lastQuestion
@@ -117,12 +119,35 @@ App.views.PageQuestions = alloy.View.extend({
 	},
 	onCreateTotalSuccess: function(response) {
 		if(response.status > 0) {
-				App.Router.getInstance().navigate('profile', {trigger: true});
+				alloy.Api.getInstance().request({
+					api: 'match',
+					call: 'get',
+					data: {},
+					success: this.onGetMatches,
+					error: this.onGetMatchesError
+				});
 		} else {
 			var alloyApi = alloy.Api.getInstance();
 			alloyApi._requests.splice(0,1);
 			bootbox.alert(response.message);
 		}
+	},
+	onGetMatches: function(response) {
+		if(response.status > 0) {
+				if(this.isBusiness){
+					App.Router.getInstance().navigate('matches', {trigger: true});
+				} else {
+					App.Router.getInstance().navigate('profile', {trigger: true});
+				}
+		} else {
+			var alloyApi = alloy.Api.getInstance();
+			alloyApi._requests.splice(0,1);
+			bootbox.alert(response.message);
+		}
+	},
+	onGetMatchesError: function(response){
+		var alloyApi = alloy.Api.getInstance();
+		alloyApi._requests.splice(0,1);
 	},
 	onCreateTotalError: function(response) {
 		var alloyApi = alloy.Api.getInstance();

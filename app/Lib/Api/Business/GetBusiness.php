@@ -17,7 +17,7 @@ class GetBusiness extends ApiCall {
 
 	protected function _execute(array $data = array()) {
 
-		$User = new User();
+		$Business = new Business();
 		$accountId = isset($data['account_id']) ? $data['account_id'] : null;
 
 		if (isset($accountId)) {

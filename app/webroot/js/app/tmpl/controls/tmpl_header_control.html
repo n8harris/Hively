@@ -13,7 +13,7 @@
 	<div class="slide-out-nav">
 		<div class="row member-info">
 			<div class="col-xs-10 member-details">
-				<img src="{{:user.profile_pic_url}}" width="80" height="80" alt="">
+				<div class="user-img" style="background: url('{{:user.profile_pic_url}}') no-repeat"></div>
 				<h1 class="member-name">{{:user.first_name}} {{:user.last_name}}</h1>
 				<h1 class="member-email">{{:user.email}}</h1>
 			</div>
@@ -25,6 +25,10 @@
 		</div>
 		<div class="main-menu">
 			<ul id="main-list" class="nav-options">
+				{{if user.role == 'user'}}
+				<li class="nav-mobile-menu"><a href="#profile">Profile</a></li>
+				<li class="nav-mobile-menu"><a href="#edit_user">Edit Bio</a></li>
+				{{/if}}
 				<li class="nav-mobile-menu"><a href="#matches">Matches</a></li>
 				<li class="nav-mobile-menu"><a href="#connections">Connections</a></li>
 				<hr />

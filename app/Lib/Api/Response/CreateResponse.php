@@ -17,11 +17,12 @@ class CreateResponse extends ApiCall {
 
 		$userId = isset($session['UserSession']['user_id']) ? trim($session['UserSession']['user_id']) : null;
 		$questionTitle = isset($data['question_title']) ? trim($data['question_title']) : null;
+		$questionId = isset($data['question_id']) ? trim($data['question_id']) : null;
 		$questionCategories = isset($data['categories']) ? $data['categories'] : null;
 		$questionPoints = isset($data['points']) ? trim($data['points']) : null;
-		$lastQuestion = isset($data['last_question']) ? trim($data['last_question']) : null;
+		$lastQuestion = isset($data['last_question']) ? $data['last_question'] : null;
 		$categoriesPoints = array();
-		if($lastQuestion){
+		if($lastQuestion == "true"){
 			$User = new User();
 			$User->create();
 			$session = Alloy::instance()->getSession();
@@ -43,7 +44,8 @@ class CreateResponse extends ApiCall {
       'Response' => array(
         'user_id' => $userId,
 				'question_title' => $questionTitle,
-				'question_categories' => $categoriesPoints
+				'question_categories' => $categoriesPoints,
+				'question_id' => $questionId
       )
     );
 
@@ -51,7 +53,7 @@ class CreateResponse extends ApiCall {
     $response = $Response->save($responseData);
 
 		$return = array(
-			'response' => $response['Response']
+			'response' => $response['Response'],
 		);
 
 		return new ApiResponse($return);

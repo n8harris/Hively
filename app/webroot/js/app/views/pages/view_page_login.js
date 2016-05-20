@@ -36,6 +36,29 @@ App.views.PageLogin = alloy.View.extend({
 
 		if(response.status > 0) {
 
+			if(response.data.user.answered){
+
+				alloy.Api.getInstance().request({
+					api: 'match',
+					call: 'get',
+					data: {},
+					success: this.onGetMatches,
+					error: this.onGetMatchesError
+				});
+				$(".hively-button", this.el).val('Matching');
+			} else {
+				App.Router.getInstance().navigate('questions', {trigger: false});
+				window.location.reload();
+			}
+		} else {
+			var alloyApi = alloy.Api.getInstance();
+			alloyApi._requests.splice(0,1);
+			bootbox.alert(response.message);
+		}
+	},
+	onGetMatches: function(response) {
+		if(response.status > 0) {
+
 			var redirect = null;
 
 			if(response.data.redirect) {
@@ -43,8 +66,13 @@ App.views.PageLogin = alloy.View.extend({
 				redirect = response.data.redirect;
 
 			} else {
-				App.Router.getInstance().navigate('profile', {trigger: false});
-				redirect = 'profile';
+				if(this.isBusiness){
+					App.Router.getInstance().navigate('matches', {trigger: false});
+					redirect = 'matches';
+				} else {
+					App.Router.getInstance().navigate('profile', {trigger: false});
+					redirect = 'profile';
+				}
 			}
 
 			// bootstrap the application again
@@ -52,11 +80,16 @@ App.views.PageLogin = alloy.View.extend({
 			window.location.reload();
 
 		} else {
-
-			$(".list-group", this.el).addClass('error');
+			var alloyApi = alloy.Api.getInstance();
+			alloyApi._requests.splice(0,1);
 			bootbox.alert(response.message);
 			$(".hively-button", this.el).val('Login');
 		}
+	},
+	onGetMatchesError: function(response){
+		var alloyApi = alloy.Api.getInstance();
+		alloyApi._requests.splice(0,1);
+		$(".hively-button", this.el).val('Login');
 	},
 	onLoginError: function(response) {
 		var alloyApi = alloy.Api.getInstance();

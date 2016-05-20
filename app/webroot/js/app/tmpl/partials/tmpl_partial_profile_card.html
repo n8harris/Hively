@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row" data-match="{{:match_id}}">
 	<div class="col-xs-12 col-md-10 col-lg-8 centered-column profile-column">
-		<div class="profile-card" id="{{:match_id}}">
+		<div class="profile-card">
 			<div class="profile-pic" style="background: url('{{:profile_pic}}') no-repeat">
 				<h5 class="user-name">{{if business}}{{:name}}{{else}}{{:first_name}} {{:last_name}}{{/if}}</h5>
 			</div>
@@ -14,7 +14,11 @@
 					{{if business}}
 					{{:line1}}, {{:city}}, {{:state}} {{:zip}}
 					{{else}}
+					{{if bio == ''}}
+					<h5>No Bio <i class="fa fa-frown-o" aria-hidden="true"></i></h5>
+					{{else}}
 					{{:bio}}
+					{{/if}}
 					{{/if}}
 				</p>
 			</div>

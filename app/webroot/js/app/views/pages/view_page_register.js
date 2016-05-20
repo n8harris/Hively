@@ -2,7 +2,8 @@
 App.views.PageRegister = alloy.View.extend({
 
 	events: {
-		"submit form": "onSubmitForm"
+		"submit form": "onSubmitForm",
+		"keyup #birthdayInput": "formatDate"
 	},
 
 	_initialize: function(options) {
@@ -115,10 +116,23 @@ App.views.PageRegister = alloy.View.extend({
 	onRegisterError: function(response) {
 		var alloyApi = alloy.Api.getInstance();
 		alloyApi._requests.splice(0,1);
+		if (response.hasOwnProperty('message')) {
+			bootbox.alert(response.message);
+		}
 		$(".hively-button", this.el).val('Create');
 	},
 	validateForm: function() {
 
 		return true;
+	},
+	formatDate: function(event){
+		var key = event.keyCode || event.charCode;
+
+    if( key != 8 && key != 46 ){
+	    value = event.currentTarget.value;
+			if (value.length == 4 || value.length == 7){
+	         event.currentTarget.value += "-";
+	    }
+		}
 	}
 });

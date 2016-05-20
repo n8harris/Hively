@@ -7,14 +7,14 @@ class EditMatch extends ApiCall {
 	protected $_permissions = array('user', 'business');
 
 	protected $_validation = array(
-		'match_id' 	=> array('required' => true),
+		'match' 	=> array('required' => true),
 	);
 
 	protected function _execute(array $data = array()) {
 		$Match = new Match();
 		$Match->create();
-		$matchId = isset($data)
-		$matchToEdit = $Match->findById($data['match_id']);
+		$matchId = $data['match'];
+		$matchToEdit = $Match->findById($matchId);
 		$fieldsToSave = array();
 		if (!empty($matchToEdit)) {
 			foreach ($data as $field => $value) {
@@ -36,7 +36,7 @@ class EditMatch extends ApiCall {
 				));
 			}
 		} else {
-			return new ApiResponse(null, -1, "There was a problem retrieving the match to update");
+			return new ApiResponse(null, -1, $matchId);
 		}
 	}
 }

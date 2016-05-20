@@ -53,6 +53,10 @@ class CreateUser extends ApiCall {
 		$businessId 	= isset($data['business_id']) ? $data['business_id'] : null;
 		$session 		= Alloy::instance()->getSession();
 
+		if(!$User->uniqueUsername($username)) {
+			return new ApiResponse(null, -1, "Username must be unique");
+		} else {
+
     $accountData = array(
       'Account' => array(
         'status' => 'active',
@@ -130,6 +134,9 @@ class CreateUser extends ApiCall {
 		);
 
 		return new ApiResponse($return);
+
+		}
+
 
 	}
 }

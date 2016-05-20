@@ -1,6 +1,7 @@
 <?php
 
 App::uses('ApiCall', 		'Lib/Alloy');
+App::uses('Response', 'Model');
 
 /**
  * Class GetQuestion
@@ -15,17 +16,43 @@ class GetQuestion extends ApiCall {
 	protected $_validation = array();
 
 	protected function _execute(array $data = array()) {
+		$Response = new Response();
+		$session = Alloy::instance()->getSession();
+		$userId = isset($session['UserSession']['user_id']) ? $session['UserSession']['user_id'] : null;
+		$responses = null;
+		$excludedQuestions = null;
+
+		if (isset($userId)) {
+			$responses = $Response->find('all', array(
+				'conditions' => array(
+					'user_id' => $userId,
+				)
+			));
+		} else {
+			return new ApiResponse(null, -1, "Error loading questions");
+		}
+
+		if (!empty($responses)) {
+			$excludedQuestions = $responses;
+		} else {
+			$excludedQuestions = array();
+		}
+
 		$client = new \Contentful\Delivery\Client(Configure::read('contentful.key'), Configure::read('contentful.space'));
 		$query = new \Contentful\Query();
 		$query->setContentType('question');
 		$isBusiness = isset($data['business']) ? trim($data['business']) : 'false';
 		$query->where('fields.isBusinessQuestion', $isBusiness);
+		foreach($excludedQuestions as $question){
+			$query->where('sys.id', $question['Response']['question_id'], "ne");
+		}
 		$questions = $client->getEntries($query);
 		$questionsList = array();
 
 		foreach($questions->getIterator() as $question) {
 			$questionsPush = array();
 			$questionsPush['title'] = $question->getTitle();
+			$questionsPush['id'] = $question->getId();
 			$questionsPush['multiple'] = $question->getMultipleChoice();
 			$questionOptions = $question->getMultipleOptions();
 			$questionsPush['options'] = array();

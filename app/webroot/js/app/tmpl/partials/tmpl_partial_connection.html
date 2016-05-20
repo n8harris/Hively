@@ -1,3 +1,7 @@
-<div class="connection-container" style="background: url('{{:profile_pic}}') no-repeat">
-	<h5 class="user-name">{{:first_name}} {{:last_name}}</h5>
+<div class="col-xs-12 col-sm-6 col-md-4">
+	<div class="connection-container" style="background: url('{{:profile_pic}}') no-repeat">
+		<a class="connection-link" href="#view_profile?id={{:id}}">
+			<h5 class="user-name">{{if business}}{{:name}}{{else}}{{:first_name}} {{:last_name}}{{/if}}</h5>
+		</a>
+	</div>
 </div>

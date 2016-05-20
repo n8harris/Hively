@@ -10,7 +10,7 @@ class Match extends AppModel {
       'user_id' => array('type' => 'objectId'),
       'match_id' => array('type' => 'objectId'),
 			'match_percentage' => array('type' => 'double'),
-			'reviewed' => array('type' => 'bool'),
-			'approved' => array('type' => 'bool')
+			'reviewed' => array('type' => 'string'),
+			'approved' => array('type' => 'string')
   );
 }

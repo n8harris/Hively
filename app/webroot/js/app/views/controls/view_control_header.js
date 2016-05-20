@@ -4,7 +4,7 @@ App.views.ControlHeader = alloy.View.extend({
 	id: "headerTop",
 
 	events: {
-    "click .hamburger": "onMobileMenuClick",
+    "click .hamburger-menu": "onMobileMenuClick",
 		"click .logout": "onLogoutClick",
 		"click #usernameLink": "onUsernameLinkClick",
 		"click .mobile-menu": "onMobileMenuClick",

@@ -42,12 +42,8 @@ class User extends AppModel {
 	}
 	public function uniqueUsername($username) {
 		$conditions = array(
-			'User.username' => trim($username['username'])
+			'User.username' => trim($username)
 		);
-
-		if($this->id || isset($username['id'])) {
-			$conditions[] = array('User.id !=' => $this->id ? $this->id : $username['id']);
-		}
 		return $this->find('count', array('conditions' => $conditions)) == 0;
 	}
 
