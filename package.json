@@ -1,21 +1,21 @@
 {
-  "name": "oaclub",
+  "name": "hively",
   "version": "0.17.0",
-  "description": "**This application serves both the website version of Odyssey Adventure Club (OAC) and the API for the mobile application.  The website is actually a single-page application, from which the front-end uses the API in the same**",
+  "description": "**This website is actually a single-page application, from which the front-end uses the API in the same**",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/focusonthefamily/odyssey-adventure-club.git"
+    "url": "https://github.com/GoCodeColorado/Hively.git"
   },
-  "author": "Focus on the Family",
+  "author": "Nathan Harris",
   "license": "Private",
   "bugs": {
-    "url": "https://github.com/focusonthefamily/odyssey-adventure-club/issues"
+    "url": "https://github.com/GoCodeColorado/Hively/issues"
   },
-  "homepage": "https://github.com/focusonthefamily/odyssey-adventure-club",
+  "homepage": "https://github.com/GoCodeColorado/Hively",
   "devDependencies": {
     "chai": "^3.2.0",
     "chalk": "^1.1.0",

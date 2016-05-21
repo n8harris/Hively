@@ -1,9 +1,9 @@
 {
-  "name": "oaclub",
+  "name": "hively",
   "version": "0.17.2",
-  "homepage": "https://github.com/focusonthefamily/odyssey-adventure-club",
+  "homepage": "https://github.com/GoCodeColorado/Hively",
   "authors": [
-    "Focus On The Family <DMS-WebDev@fotf.org>"
+    "Nathan Harris"
   ],
   "license": "MIT",
   "ignore": [
