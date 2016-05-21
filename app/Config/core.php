@@ -52,7 +52,7 @@
 	Configure::write('colorado.status', 'Good Standing');
 	Configure::write('user.profile_pic', 'img/default-user-profile.png');
 	Configure::write('business.profile_pic', 'img/default-business-profile.png');
-	Configure::write('match.num_category', 1);
+	Configure::write('match.num_category', 2);
 	Configure::write('match.total_difference', 40);
 
 

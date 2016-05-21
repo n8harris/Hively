@@ -52,22 +52,24 @@ class GetMatch extends ApiCall {
 		foreach($comparisonTotals as $comparisonTotal){
 			$numMatches = 0;
 			$totalPercentage = 0;
+			$numPercentage = 0;
 			$comparisonTotal = $comparisonTotal['CategoryTotal'];
 			foreach($userTotals['category_totals'] as $userCategoryTotal){
 				foreach($comparisonTotal['category_totals'] as $comparisonCategoryTotal){
 					if($userCategoryTotal['id'] == $comparisonCategoryTotal['id']){
 						$userCategoryPoints = $userCategoryTotal['points'];
 						$comparisonCategoryPoints = $comparisonCategoryTotal['points'];
+						$matchPercentage = 100 - (( abs($userCategoryPoints - $comparisonCategoryPoints) / (($userCategoryPoints + $comparisonCategoryPoints) / 2) ) * 100);
+						$totalPercentage = $totalPercentage + $matchPercentage;
+						$numPercentage++;
 						if (abs($userCategoryPoints - $comparisonCategoryPoints) <= Configure::read('match.total_difference')) {
-							$matchPercentage = 100 - (( abs($userCategoryPoints - $comparisonCategoryPoints) / (($userCategoryPoints + $comparisonCategoryPoints) / 2) ) * 100);
-							$totalPercentage = $totalPercentage + $matchPercentage;
 							$numMatches++;
 						}
 					}
 				}
 			}
 			if ($numMatches >= Configure::read('match.num_category')) {
-				$totalMatchPercentage = $totalPercentage / $numMatches;
+				$totalMatchPercentage = $totalPercentage / $numPercentage;
 				$matchData = array(
 					'Match' => array(
 						'user_id' => $userId,
