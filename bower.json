@@ -19,9 +19,7 @@
     "jquery": "~1.9.1",
     "accounting.js": "~0.3.2",
     "bootbox": "~4.4",
-    "bootstrap-datepicker": "~1.4.0",
     "bootstrap": "#v4.0.0-alpha.2",
-		"bootstrap-select": "~1.10.0",
     "purl": "~2.3.1",
     "jsrender": "~1.0.0-beta",
     "json2": "*",
@@ -31,7 +29,7 @@
     "jquery.placeholder": "~0.2.4",
     "moment": "~2.10.3",
 		"select2": "~4.0.2",
-		"jTinder": "git@github.com:n8harris/jTinder.git#14e4b4d"
+		"jTinder": "https://github.com/n8harris/jTinder.git#14e4b4d"
   },
   "devDependencies": {}
 }
