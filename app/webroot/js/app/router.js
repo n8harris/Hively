@@ -53,9 +53,13 @@ App.Router = App.RouterBase.extend({
 			this.showView(view);
 	},
 	questions: function(opt_params) {
+		if(App.Data.getInstance().user.get('answered')){
+			this.navigate("profile", {trigger: true});
+		} else {
 			App.questions = true;
 			var view = new App.views.PageQuestions();
 			this.showView(view);
+		}
 	},
 	choose_path: function(opt_params) {
 			App.choose_path = true;
