@@ -52,9 +52,17 @@ $ bower install
 $ bundle install
 ```
 
-
 #### Config Files
  - Duplicate `.env.example` file and rename to `.env` and set variable for environment
+
+#### Seeding
+
+You will need to run two commands to seed Mongo with some data the application will need to run. The first will pre-populate Colorado Business Entities. These commands will need to be run from the Hively directory.
+
+```
+$ app/Console/cake AddBusinesses
+$ app/Console/cake AddCategories
+```
 
 #### File Permissions
   Make the following files writeable by the web server (i.e. use chmod -R 755 from the terminal after navigating to each of these folders):
