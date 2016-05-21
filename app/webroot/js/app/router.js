@@ -32,9 +32,15 @@ App.Router = App.RouterBase.extend({
 	login: function(opt_params) {
 			App.login = true;
 			if(App.Data.getInstance().isLoggedIn()) {
-				App.login = false;
-				this.navigate("login", {trigger: true});
-				return;
+				if(App.Data.getInstance().user.get('role') == 'business'){
+					App.login = false;
+					this.navigate("matches", {trigger: true});
+					return;
+				} else {
+					App.login = false;
+					this.navigate("profile", {trigger: true});
+					return;
+				}
 			}
 
 			var view = new App.views.PageLogin();
