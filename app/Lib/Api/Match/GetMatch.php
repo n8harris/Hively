@@ -59,6 +59,7 @@ class GetMatch extends ApiCall {
 
 		//Do matching algorithm
 		foreach($comparisonTotals as $comparisonTotal){
+			$Match->create();
 			$numMatches = 0;
 			$totalPercentage = 0;
 			$numPercentage = 0;
@@ -82,13 +83,11 @@ class GetMatch extends ApiCall {
 				//Only create match entry if number of category matches is greater than or equal to what we defined
 				$totalMatchPercentage = $totalPercentage / $numPercentage;
 				$matchData = array(
-					'Match' => array(
 						'user_id' => $userId,
 						'match_id' => $comparisonTotal['user_id'],
 						'match_percentage' => $totalMatchPercentage,
 						'reviewed' => "false",
 						'approved' => "false"
-					)
 				);
 				$Match->save($matchData);
 			}
