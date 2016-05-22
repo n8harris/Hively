@@ -40,17 +40,25 @@ class GetMatch extends ApiCall {
 
 		//Exclude ids that have already been matched
 		foreach($matches as $match) {
-			$excludedIds[] = $match['Match']['match_id'];
+			array_push($excludedIds, $match['Match']['match_id']);
 		}
 
 		$comparisonConditions = array();
 		$comparisonConditions['conditions'] = array();
-		if (!empty($excludedIds)) {
-			$comparisonConditions['conditions']['NOT'] = array('user_id' => $excludedIds);
-		}
-		$comparisonConditions['conditions']['role'] = $lookupRole;
+		/*if (!empty($excludedIds)) {
+			$comparisonConditions['conditions']['NOT'] = array('CategoryTotal.user_id' => $excludedIds);
+		}*/
+		//$comparisonConditions['conditions']['role'] = $lookupRole;
 
 		$comparisonTotals = $CategoryTotal->find('all', $comparisonConditions);
+		$comparisonTotalsArray = array();
+		foreach($comparisonTotals as $comparisonTotal) {
+			foreach($excludedIds as $id){
+				if ($comparisonTotal['CategoryTotal']['user_id'] == $id && $comparisonTotal['CategoryTotal']['role'] == $lookupRole) {
+					array_push($comparisonTotalsArray, $comparisonTotal);
+				}
+			}
+		}
 
 		$userTotals = $CategoryTotal->findByUserId($userId);
 		if (!empty($userTotals)) {
@@ -58,7 +66,7 @@ class GetMatch extends ApiCall {
 		}
 
 		//Do matching algorithm
-		foreach($comparisonTotals as $comparisonTotal){
+		foreach($comparisonTotalsArray as $comparisonTotal){
 			$Match->create();
 			$numMatches = 0;
 			$totalPercentage = 0;
