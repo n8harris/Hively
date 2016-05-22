@@ -151,7 +151,7 @@ App.views.PageMatches = alloy.View.extend({
 		}));
 	},
 	injectUser: function(user){
-		if (user.percentage > 50) {
+		if (user.percentage > 75) {
 			this.headingClass = 'match-blue';
 		} else {
 			this.headingClass = 'match-yellow';

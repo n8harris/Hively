@@ -64,6 +64,7 @@ class GetMatch extends ApiCall {
 			$numPercentage = 0;
 			$comparisonTotal = $comparisonTotal['CategoryTotal'];
 			foreach($userTotals['category_totals'] as $userCategoryTotal){
+				$numPercentage++;
 				foreach($comparisonTotal['category_totals'] as $comparisonCategoryTotal){
 					if($userCategoryTotal['id'] == $comparisonCategoryTotal['id']){
 						$userCategoryPoints = $userCategoryTotal['points'];
@@ -71,7 +72,6 @@ class GetMatch extends ApiCall {
 						//Calculate percentage similarity between two numbers
 						$matchPercentage = (1 - (abs($userCategoryPoints - $comparisonCategoryPoints) / 100)) * 100;
 						$totalPercentage = $totalPercentage + $matchPercentage;
-						$numPercentage++;
 						if (abs($userCategoryPoints - $comparisonCategoryPoints) <= Configure::read('match.total_difference')) {
 							$numMatches++;
 						}
