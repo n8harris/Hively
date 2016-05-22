@@ -3,6 +3,14 @@
 App::uses('User', 'Model');
 App::uses('UserSession', 'Model');
 
+/**
+ * Class EditUser
+ *
+ * Edits a user with data from the form
+ *
+ * @return user The edited user
+ */
+
 class EditUser extends ApiCall {
 
 	protected $_permissions = array('user');
@@ -15,6 +23,7 @@ class EditUser extends ApiCall {
 		$User->create();
 		$userToEdit = $User->findById($session['UserSession']['user_id']);
 		$fieldsToSave = array();
+		//Only edit fields we need to
 		if (!empty($userToEdit)) {
 			foreach ($data as $field => $value) {
 				if (!$User->hasField($field)) {

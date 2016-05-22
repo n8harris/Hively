@@ -5,6 +5,16 @@ App::uses('Match', 		'Model');
 App::uses('User', 		'Model');
 App::uses('Business', 		'Model');
 
+/**
+ * Class ListAllMatch
+ *
+ * Lists all matches for a logged in user
+ *
+ * @return matches The found matches
+ * @return users The users associated with matches
+ * @return businesses The businesses associated with matches
+ */
+
 class ListAllMatch extends ApiCall {
 
 	protected $_permissions = array('user', 'business');

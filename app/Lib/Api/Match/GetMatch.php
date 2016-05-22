@@ -4,6 +4,13 @@ App::uses('ApiCall', 		'Lib/Alloy');
 App::uses('Match', 			'Model');
 App::uses('CategoryTotal', 			'Model');
 
+/**
+ * Class GetMatch
+ *
+ * Generates matches based on point totals from questions and categories associated with questions
+ *
+ * @return matches The matches generated from the matching algorithm
+ */
 
 class GetMatch extends ApiCall {
 
@@ -31,6 +38,7 @@ class GetMatch extends ApiCall {
         'conditions' => array('user_id' => $userId)
     ));
 
+		//Exclude ids that have already been matched
 		foreach($matches as $match) {
 			$excludedIds[] = $match['Match']['match_id'];
 		}
@@ -49,6 +57,7 @@ class GetMatch extends ApiCall {
 			$userTotals = $userTotals['CategoryTotal'];
 		}
 
+		//Do matching algorithm
 		foreach($comparisonTotals as $comparisonTotal){
 			$numMatches = 0;
 			$totalPercentage = 0;
@@ -59,7 +68,8 @@ class GetMatch extends ApiCall {
 					if($userCategoryTotal['id'] == $comparisonCategoryTotal['id']){
 						$userCategoryPoints = $userCategoryTotal['points'];
 						$comparisonCategoryPoints = $comparisonCategoryTotal['points'];
-						$matchPercentage = 100 - (( abs($userCategoryPoints - $comparisonCategoryPoints) / (($userCategoryPoints + $comparisonCategoryPoints) / 2) ) * 100);
+						//Calculate percentage similarity between two numbers
+						$matchPercentage = (1 - (abs($userCategoryPoints - $comparisonCategoryPoints) / 100)) * 100;
 						$totalPercentage = $totalPercentage + $matchPercentage;
 						$numPercentage++;
 						if (abs($userCategoryPoints - $comparisonCategoryPoints) <= Configure::read('match.total_difference')) {
@@ -69,6 +79,7 @@ class GetMatch extends ApiCall {
 				}
 			}
 			if ($numMatches >= Configure::read('match.num_category')) {
+				//Only create match entry if number of category matches is greater than or equal to what we defined
 				$totalMatchPercentage = $totalPercentage / $numPercentage;
 				$matchData = array(
 					'Match' => array(

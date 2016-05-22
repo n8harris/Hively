@@ -7,6 +7,16 @@ App::uses('Account',		'Model');
 App::uses('Credential', 	'Model');
 App::uses('UserSession', 	'Model');
 
+/**
+ * Class CreateUser
+ *
+ * Creates a user with data from the form
+ *
+ * @return user The user created
+ * @return account The account created that is associated with the user
+ * @return credentials The credential entry created that is associated with the user (password info)
+ */
+
 class CreateUser extends ApiCall {
 
 	protected $_permissions = '*';

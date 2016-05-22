@@ -8,7 +8,7 @@ App::uses('Response', 'Model');
  *
  * Loads all questions defined in Contentful CMS
  *
- * @return questions The businesses returned from the API call
+ * @return questions The questions returned from the API call
  */
 class GetQuestion extends ApiCall {
 
@@ -38,6 +38,7 @@ class GetQuestion extends ApiCall {
 			$excludedQuestions = array();
 		}
 
+		//Use Contentful PHP SDK to retrieve our questions
 		$client = new \Contentful\Delivery\Client(Configure::read('contentful.key'), Configure::read('contentful.space'));
 		$query = new \Contentful\Query();
 		$query->setContentType('question');
@@ -49,6 +50,7 @@ class GetQuestion extends ApiCall {
 		$questions = $client->getEntries($query);
 		$questionsList = array();
 
+		//Generate simpler JSON structure for calculating matches
 		foreach($questions->getIterator() as $question) {
 			$questionsPush = array();
 			$questionsPush['title'] = $question->getTitle();

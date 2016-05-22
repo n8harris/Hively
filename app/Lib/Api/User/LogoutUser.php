@@ -3,6 +3,13 @@
 App::uses('ApiCall', 		'Lib/Alloy');
 App::uses('UserSession', 	'Model');
 
+/**
+ * Class LogoutUser
+ *
+ * Logs a user out
+ *
+ */
+
 class LogoutUser extends ApiCall {
 
 	protected $_permissions = '*';

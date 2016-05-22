@@ -6,6 +6,15 @@ App::uses('Account', 			'Model');
 App::uses('Credential',		'Model');
 App::uses('UserSession', 	'Model');
 
+/**
+ * Class LoginUser
+ *
+ * Logs in a user with data from the form
+ *
+ * @return user The logged in user
+ * @return account The account that is associated with the user
+ */
+
 class LoginUser extends ApiCall {
 
 	protected $_permissions = '*';

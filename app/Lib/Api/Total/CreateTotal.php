@@ -4,6 +4,14 @@ App::uses('ApiCall', 		'Lib/Alloy');
 App::uses('CategoryTotal', 			'Model');
 App::uses('Response', 			'Model');
 
+/**
+ * Class CreateTotal
+ *
+ * Creates a CategoryTotal entry which defines total category point values across all questions for a user
+ *
+ * @return response The CategoryTotal object
+ */
+
 class CreateTotal extends ApiCall {
 
 	protected $_permissions = array('user', 'business');
@@ -23,6 +31,7 @@ class CreateTotal extends ApiCall {
         'conditions' => array('user_id' => $userId)
     ));
 
+		//Get all responses for user and merge point values together if the categories are the same
 		foreach ($responses as $response) {
 			foreach($response['Response']['question_categories'] as $category) {
 				$categoryPush = array();

@@ -4,6 +4,13 @@ App::uses('ApiCall', 		'Lib/Alloy');
 App::uses('Response', 			'Model');
 App::uses('User', 			'Model');
 
+/**
+ * Class CreateResponse
+ *
+ * Creates a question response using data from the form
+ *
+ * @return response The created response
+ */
 
 class CreateResponse extends ApiCall {
 
