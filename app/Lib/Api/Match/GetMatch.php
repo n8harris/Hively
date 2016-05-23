@@ -53,10 +53,14 @@ class GetMatch extends ApiCall {
 		$comparisonTotals = $CategoryTotal->find('all', $comparisonConditions);
 		$comparisonTotalsArray = array();
 		foreach($comparisonTotals as $comparisonTotal) {
+			$saveComparison = true;
 			foreach($excludedIds as $id){
-				if ($comparisonTotal['CategoryTotal']['user_id'] == $id && $comparisonTotal['CategoryTotal']['role'] == $lookupRole) {
-					array_push($comparisonTotalsArray, $comparisonTotal);
+				if ($comparisonTotal['CategoryTotal']['user_id'] == $id) {
+					$saveComparison = false;
 				}
+			}
+			if ($saveComparison && $comparisonTotal['CategoryTotal']['role'] == $lookupRole) {
+				array_push($comparisonTotalsArray, $comparisonTotal);
 			}
 		}
 
