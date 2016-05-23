@@ -2,7 +2,7 @@
 
 **This document assumes the user is starting from scratch with no dependencies installed. If one of the dependencies mentioned is already installed on your system, please skip that step.**
 
-This website is a single-page application. The front-end of the site uses a custom API to retrieve content.
+This website is a single-page application. The front-end of the site uses a custom API to retrieve content. The site can be access by going to [http://hivelyapp.io](http://hivelyapp.io) and clicking Sign Up.
 
 ## Project Setup
 
@@ -192,3 +192,49 @@ TBD
 
 - This is a helpful application for testing the OAC API as well as various requests that the website may make. You
 can find it [here](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en).
+
+## Architecture
+
+### Backend
+
+The backend of this application is CakePHP.  The Model layer is heavily leveraged, the controller and view layers and primarily to load the chrome for the front-end single-page application - you won't find a lot of controller code.
+
+There is one version of the chrome:
+
+* The controller for this is LandingController and the layout file is `app/View/Layouts/landing.ctp`. There is no view file.
+
+The app leverages the Alloy library, which makes handling RPC requests from javascript/mobile clients quite a bit easier.  The base library is in `app/Lib/Alloy`.  All calls are routed through the ApiController, which loads an appropriate API class from the ones available in `app/Lib/Api`.
+
+### Frontend
+
+The front-end of the application is based on `backbone.js`.  The application files are found in `app/webroot/js/app`.
+
+The front-end also leverages the Alloy library, which takes care of handling requests to the backend and adds a view manager to handle some of backbone's deficiencies.
+
+The templates are all javascript jsRender templates.  Though they are stored as separate files in `app/webroot/js/app/tmpl`, they are loaded into the chrome as `<script>` blocks upon execution.
+
+
+## Integrations
+
+The application has one 3rd party integration required to make it run:
+
+### Contentful:
+The Contentful CMS is used to store question and question category info. We query the service from our custom API using the Contentful PHP SDK whenever we need question info (i.e. the questions page).
+
+### Colorado Data Sets:
+Currently, we are only using the Colorado Business Entities dataset to prepopulate business info, but we hope to use more in the future as our presentation will demonstrate. Info on the dataset can be found [here](https://data.colorado.gov/Business/Colorado-Business-Entities/4ykn-tg5h).
+
+## Code Walkthrough
+
+This application matches businesses up with potential employees and employees with businesses. You should be able to do several things with the application:
+
+* Sign up for a new account as either a business or user (businesses should be able to select from a pre-populated list).
+* Answer questions about your personality or company culture
+* Be matched with potential businesses or employees and view their match percentage
+* Swipe left or right through a pool of matches
+* View saved matches in a connection pool page where each individual profile can be viewed for later contact
+* Edit your bio
+* View your own profile
+* Logout
+* Login
+* The matching algorithm will attempt to match a user with other employees or businesses when they login again
